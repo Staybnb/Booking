@@ -2,6 +2,7 @@
 ## by Louis Otter
 
 Booking Component Referencing AirBnB 
+
 React, Node.js, MySQL
 
 ## FangNYC fork by Ben Mangold
