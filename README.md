@@ -1,6 +1,6 @@
 # Booking
 ## Louis Otter
-Booking Component
+Booking Component Referencing AirBnB
 
 ## fork by Ben Mangold
 [Trello Task Board](https://trello.com/b/nO5AU22g/sb-staybnb-bookings)

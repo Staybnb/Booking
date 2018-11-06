@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Staybnb/Booking.git"
+    "url": "git+https://github.com/FangNYC/Booking.git"
   },
   "author": "louisotter",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Staybnb/Booking/issues"
+    "url": "https://github.com/FangNYC/Booking/issues"
   },
-  "homepage": "https://github.com/Staybnb/Booking#readme",
+  "homepage": "https://github.com/FangNYC/Booking#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
