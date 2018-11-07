@@ -13,3 +13,4 @@ System Design
 
 [Engineering Journal](https://www.dropbox.com/s/f52rd1rmw4gf97a/SDC_Engineering_Journal.md?dl=0)
 
+## DB is configured for Ben's local dev env
