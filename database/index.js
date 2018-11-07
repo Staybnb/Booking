@@ -20,7 +20,6 @@ var getData = (id)=>{
 		// password: 'louisotter',
 		database : 'booking'
 
-
 	}).then((conn)=>{
 			
 		let aptDates = conn.query(`
@@ -36,6 +35,7 @@ var getData = (id)=>{
 
 	}).then((raw)=>{
 
+		console.log(raw)
 		let data = stringParse(raw)
 		aptData.price = data[0].price;
 		aptData.apartmentid = data[0].apartmentid;

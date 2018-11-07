@@ -14,7 +14,7 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname + '/../client/dist')));
 
-app.get('/bookinglisting/id:id', (req, res)=>{ 
+app.get('/bookinglisting/id/:id', (req, res)=>{ 
 	id = req.params.id
 	database.getData(id).then((dataObj)=>{
 		res.status(200).send(dataObj);
