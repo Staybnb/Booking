@@ -1,23 +1,28 @@
 const mysql = require('promise-mysql')
 const legacy = require('./legacy.js')
+var Promise = require("bluebird");
+var getSqlConnection = require('./dbConnection.js');
 
-pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  database: 'booking',
-  connectionLimit: 10
-});
-
-const getListing = (id) => {
+const getListingData = (id) => {
 	return legacy.getListingData(id);
 }
 
-const postListing = (payload) => {
-	console.log('db post listing')
-	console.log(payload)
+const getListing = (id) => {
+	console.log('db get listing')
 }
 
-module.exports.getListing = getListing;
+const postListing = (payload) => {
+	console.log('db post listing');
+	console.log(payload);
+}
+
+const deleteListing = (id) => {
+	console.log('db delete listing');
+	console.log(id);
+}
+
+module.exports.getListingData = getListingData;
 module.exports.postListing = postListing;
+module.exports.deleteListing = deleteListing;
 
 
