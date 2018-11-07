@@ -23,6 +23,15 @@ app.get('/api/listingdata/:id', (req, res)=>{
 	})
 })
 
+app.get('/api/listings', (req, res) => {
+	// console.log(database.getListings())
+	database.getListings().then((dataObj)=>{
+		res.status(200).send(dataObj);
+	}).catch((err)=>{
+		res.send(err)
+	})
+})
+
 app.post('/api/listing', (req, res) => {
 	console.log('post listing listing')
 	database.createListing(req.body).then((dataObj) => {

@@ -7,8 +7,15 @@ const getListingData = (id) => {
 	return legacy.getListingData(id);
 }
 
-const getListing = (id) => {
-	console.log('db get listing')
+const getListings = () => {
+	console.log('db get listings')
+	return Promise.using(getSqlConnection(), function(connection) {
+    return connection.query('select * from apartment').then(function(rows) {
+      return (rows)
+    }).catch(function(error) {
+      console.log(error);
+    });
+  })
 }
 
 const postListing = (payload) => {
@@ -21,7 +28,11 @@ const deleteListing = (id) => {
 	console.log(id);
 }
 
+
 module.exports.getListingData = getListingData;
+
+// extended api
+module.exports.getListings = getListings;
 module.exports.postListing = postListing;
 module.exports.deleteListing = deleteListing;
 
