@@ -1,4 +1,16 @@
-var mysql = require('promise-mysql');
+var mysqlP = require('promise-mysql');
+const mysql = require('mysql');
+
+var connection = mysqlP.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  database : 'booking'
+});
+
+
+// open db connection
+
+
 
 let stringParse = (data)=>{
   return JSON.parse(JSON.stringify(data))
@@ -9,15 +21,9 @@ var getData = (id)=>{
 
 	let aptData = {dates: [], price: 0, apartmentid: 0, minStay: 0, stars: 0, numRatings: 0, max:0};
 
-	return mysql.createConnection({
-
-		// host     : 'localhost',   Local config
-		// user     : 'root',
-		// password : '',
-		// database : 'booking'
+	return mysqlP.createConnection({
 		host: 'localhost',
 		user: 'root',
-		// password: 'louisotter',
 		database : 'booking'
 
 	}).then((conn)=>{
