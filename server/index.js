@@ -24,11 +24,10 @@ app.get('/api/listingdata/:id', (req, res)=>{
 })
 
 app.get('/api/listings', (req, res) => {
-	// console.log(database.getListings())
 	database.getListings().then((dataObj)=>{
 		res.status(200).send(dataObj);
 	}).catch((err)=>{
-		res.send(err)
+		res.status(500).send(err)
 	})
 })
 

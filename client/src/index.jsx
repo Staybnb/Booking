@@ -62,6 +62,7 @@ class Booking extends React.Component {
 		if(listingId){
 			axios.get(`/api/listingdata/${listingId}`)
 			.then(({data}) => {
+				console.log(data)
 				this.setState(data)
 				var badDates = data.dates.map(date => {
 					return moment(date)
