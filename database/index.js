@@ -7,11 +7,6 @@ var connection = mysqlP.createConnection({
   database : 'booking'
 });
 
-
-// open db connection
-
-
-
 let stringParse = (data)=>{
   return JSON.parse(JSON.stringify(data))
 };
