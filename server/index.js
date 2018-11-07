@@ -23,25 +23,25 @@ app.get('/api/apartment/:id', (req, res)=>{
 	})
 })
 
-app.post('/apartment/:id', (req, res) => {
+app.post('/api/apartment/:id', (req, res) => {
 	console.log('post apartment listing')
 })
 
-app.delete('/apartment/:id', (req, res) => {
+app.delete('/api/apartment/:id', (req, res) => {
 	console.log('delete apartment listing')
 })
 
-app.get('/booking')
+app.get('/api/booking', (req, res) => {
+	console.log('get all bookings')
+})
 
-app.get('/booking/:aptId', (req, res) => {
+app.get('/api/booking/:aptId', (req, res) => {
 	console.log('get bookings by apartment')
 })
 
-app.post('/booking/:aptId', (req, res) => {
+app.post('/api/booking/:aptId', (req, res) => {
 	console.log('create a new booking for an apartment')
 })
-
-// app.use('/bundle.js', express.static(path.join(__dirname + '/../client/dist')));
 
 app.get('/*', (req, res)=>{
 	res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
@@ -50,5 +50,3 @@ app.get('/*', (req, res)=>{
 app.listen(port, ()=>{
     console.log(`listening on port ${port}`)
 })
-
-// app.listen(process.env.PORT)
