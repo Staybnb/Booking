@@ -59,7 +59,6 @@ class Booking extends React.Component {
 		let listingId = (queryString.search.slice(-7) * 1)
 		console.log('client current id', listingId)
 		if(listingId){
-			console.log(`/api/apartment/${listingId}`)
 			axios.get(`/api/apartment/${listingId}`)
 			.then(({data}) => {
 				this.setState(data)

@@ -3,11 +3,11 @@ const cors = require('cors')
 const database = require('../database/index.js')
 const express = require('express')
 const path = require('path')
-const port = 4000;
 const morgan = require('morgan');
 
-var app = express();
+const port = 4000;
 
+var app = express();
 app.use("default", morgan)
 app.use(bodyParser.json());
 app.use(cors());
@@ -31,17 +31,19 @@ app.delete('/api/apartment/:id', (req, res) => {
 	console.log('delete apartment listing')
 })
 
-app.get('/api/booking', (req, res) => {
-	console.log('get all bookings')
-})
+// TODO: perform db migration to make bookings table
 
-app.get('/api/booking/:aptId', (req, res) => {
-	console.log('get bookings by apartment')
-})
+// app.get('/api/booking', (req, res) => {
+// 	console.log('get all bookings')
+// })
 
-app.post('/api/booking/:aptId', (req, res) => {
-	console.log('create a new booking for an apartment')
-})
+// app.get('/api/booking/:aptId', (req, res) => {
+// 	console.log('get bookings by apartment')
+// })
+
+// app.post('/api/booking/:aptId', (req, res) => {
+// 	console.log('create a new booking for an apartment')
+// })
 
 app.get('/*', (req, res)=>{
 	res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
