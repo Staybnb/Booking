@@ -35,7 +35,7 @@ app.get('/booking/:aptId', (req, res) => {
 	console.log('get bookings by apt id')
 })
 
-app.post('/booking/aptId', (req, res) => {
+app.post('/booking/:aptId', (req, res) => {
 	console.log('create a new apartment booking')
 })
 
