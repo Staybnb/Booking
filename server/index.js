@@ -8,27 +8,37 @@ const morgan = require('morgan');
 const port = 4000;
 
 var app = express();
-app.use("default", morgan)
 app.use(bodyParser.json());
 app.use(cors());
+app.use("default", morgan)
 
 app.use(express.static(path.join(__dirname + '/../client/dist')));
 
-app.get('/api/apartment/:id', (req, res)=>{ 
+app.get('/api/listing/:id', (req, res)=>{ 
 	id = req.params.id
-	database.getData(id).then((dataObj)=>{
+	database.getListing(id).then((dataObj)=>{
 		res.status(200).send(dataObj);
 	}).catch((err)=>{
 		res.send(err)
 	})
 })
 
-app.post('/api/apartment/:id', (req, res) => {
-	console.log('post apartment listing')
+app.post('/api/listing', (req, res) => {
+	console.log('post listing listing')
+	database.createListing(req.body).then((dataObj) => {
+		res.status(200).send(dataObj)
+	}).catch((err) => {
+		res.status(500).send(err);
+	});
 })
 
-app.delete('/api/apartment/:id', (req, res) => {
+app.delete('/api/listing/:id', (req, res) => {
 	console.log('delete apartment listing')
+	database.deleteListing(req.params.id).then((dataObj) => {
+		res.status(200).send(dataObj)
+	}).catch((err) => {
+		res.status(500).send(err);
+	});
 })
 
 // TODO: perform db migration to make bookings table

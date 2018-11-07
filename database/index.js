@@ -1,13 +1,23 @@
-const mysql = require('mysql')
+const mysql = require('promise-mysql')
 const legacy = require('./legacy.js')
 
-// legacy functionality utilizing mysqlp
-// TODO: replicate this functionality with updated schema
-const getData = (id) => {
-	return legacy.getData(id);
+pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  database: 'booking',
+  connectionLimit: 10
+});
+
+const getListing = (id) => {
+	return legacy.getListingData(id);
 }
 
-module.exports.getData = getData;
+const postListing = (payload) => {
+	console.log('db post listing')
+	console.log(payload)
+}
 
+module.exports.getListing = getListing;
+module.exports.postListing = postListing;
 
 

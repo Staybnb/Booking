@@ -5,7 +5,7 @@ let stringParse = (data)=>{
   return JSON.parse(JSON.stringify(data))
 };
 
-var getData = (id)=>{
+var getListingData = (id) => { 
 	console.log('Database query', id)
 
 	let aptData = {dates: [], price: 0, apartmentid: 0, minStay: 0, stars: 0, numRatings: 0, max:0};
@@ -49,7 +49,7 @@ var getData = (id)=>{
 	})   
 }
 
-module.exports.getData = getData;
+module.exports.getListingData = getListingData;
 
 
 
