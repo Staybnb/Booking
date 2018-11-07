@@ -15,9 +15,9 @@ var getData = (id)=>{
 		// user     : 'root',
 		// password : '',
 		// database : 'booking'
-		host: 'booking.cksae9ebsoyz.us-east-2.rds.amazonaws.com',
+		host: 'localhost',
 		user: 'root',
-		password: 'louisotter',
+		// password: 'louisotter',
 		database : 'booking'
 
 
