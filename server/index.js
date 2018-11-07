@@ -14,7 +14,7 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname + '/../client/dist')));
 
-app.get('/apartment/:id', (req, res)=>{ 
+app.get('/api/apartment/:id', (req, res)=>{ 
 	id = req.params.id
 	database.getData(id).then((dataObj)=>{
 		res.status(200).send(dataObj);
@@ -31,12 +31,14 @@ app.delete('/apartment/:id', (req, res) => {
 	console.log('delete apartment listing')
 })
 
+app.get('/booking')
+
 app.get('/booking/:aptId', (req, res) => {
-	console.log('get bookings by apt id')
+	console.log('get bookings by apartment')
 })
 
 app.post('/booking/:aptId', (req, res) => {
-	console.log('create a new apartment booking')
+	console.log('create a new booking for an apartment')
 })
 
 // app.use('/bundle.js', express.static(path.join(__dirname + '/../client/dist')));
