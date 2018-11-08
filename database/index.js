@@ -19,8 +19,6 @@ const getListings = () => {
 }
 
 const postListing = (payload) => {
-	console.log('db post listing')
-	console.log(payload);
 	return Promise.using(getSqlConnection(), function(connection) {
     return connection.query('insert into apartment (price, minStay, stars, numRatings, max) values (?,?,?,?,?)', ['10000','10','1','1','1000']).then(function(rows) {
       return (rows)
@@ -31,16 +29,10 @@ const postListing = (payload) => {
 }
 
 const deleteListing = (id) => {
-	console.log('db delete listing');
-	console.log(id);
 	return Promise.using(getSqlConnection(), function(connection) {
-		console.log('prom')
 		return connection.query('delete from apartment where id = ?', id.toString()).then((res) => {
-			console.log('hi');
-			console.log(res);
 			return res;
 		}).catch((err) => {
-			console.log('boo')
 			return err;
 		})
 	})
