@@ -32,7 +32,6 @@ app.get('/api/listings', (req, res) => {
 })
 
 app.post('/api/listing', (req, res) => {
-	console.log('post listing listing')
 	database.postListing(req.body).then((dataObj) => {
 		res.status(200).send(dataObj)
 	}).catch((err) => {
@@ -42,6 +41,7 @@ app.post('/api/listing', (req, res) => {
 
 app.delete('/api/listing/:id', (req, res) => {
 	console.log('delete apartment listing')
+	console.log(req.params.id)
 	database.deleteListing(req.params.id).then((dataObj) => {
 		res.status(200).send(dataObj)
 	}).catch((err) => {
