@@ -33,7 +33,7 @@ app.get('/api/listings', (req, res) => {
 
 app.post('/api/listing', (req, res) => {
 	console.log('post listing listing')
-	database.createListing(req.body).then((dataObj) => {
+	database.postListing(req.body).then((dataObj) => {
 		res.status(200).send(dataObj)
 	}).catch((err) => {
 		res.status(500).send(err);

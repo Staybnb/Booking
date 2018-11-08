@@ -21,6 +21,13 @@ const getListings = () => {
 const postListing = (payload) => {
 	console.log('db post listing');
 	console.log(payload);
+	return Promise.using(getSqlConnection(), function(connection) {
+    return connection.query('insert into apartment (price, minStay, stars, numRatings, max) values (?,?,?,?,?)', ['10000','10','1','1','1000']).then(function(rows) {
+      return (rows)
+    }).catch(function(error) {
+      console.log(error);
+    });
+  })
 }
 
 const deleteListing = (id) => {
