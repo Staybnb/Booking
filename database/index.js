@@ -3,7 +3,7 @@ const legacy = require('./legacy.js')
 var Promise = require("bluebird");
 var getSqlConnection = require('./dbConnection.js');
 
-// performs joins to get all dates for listing
+// used by client
 const getListingData = (id) => {
 	return legacy.getListingData(id);
 }
