@@ -22,7 +22,7 @@ System Design
 
 ## Test
 
-`npm run test`
+`npm run test` exit with ctrl-c
 
 ## Seed local DB
 
