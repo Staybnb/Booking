@@ -57,12 +57,13 @@ app.get('/api/dates', (req, res) => {
 	})
 })
 
-
-
-
-
-
-
+app.post('/api/date', (req, res) => {
+	database.postListing(req.body).then((dataObj) => {
+		res.status(200).send(dataObj)
+	}).catch((err) => {
+		res.status(500).send(err);
+	});
+})
 
 // TODO: perform db migration to make bookings table
 
