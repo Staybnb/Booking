@@ -25,6 +25,7 @@ CREATE TABLE dates (
 	PRIMARY KEY (id),
 	FOREIGN KEY (apartment_id)
 		REFERENCES apartment (id)
+		ON DELETE CASCADE
 
 );
 
