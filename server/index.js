@@ -60,7 +60,9 @@ app.get('/api/dates', (req, res) => {
 
 // { date, apartmentId }
 app.post('/api/date', (req, res) => {
-	database.postListing(req.body).then((dataObj) => {
+	console.log('post date')
+	console.log(req.body);
+	database.postDate(req.body).then((dataObj) => {
 		res.status(200).send(dataObj)
 	}).catch((err) => {
 		res.status(500).send(err);
