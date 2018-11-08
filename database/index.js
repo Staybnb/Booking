@@ -19,9 +19,10 @@ const getListings = () => {
   })
 }
 
-const postListing = (payload) => {
+// '10000','10','1','1','1000'
+const postListing = ({ price, minStay, stars, numRatings, max }) => {
 	return Promise.using(getSqlConnection(), function(connection) {
-    return connection.query('insert into apartment (price, minStay, stars, numRatings, max) values (?,?,?,?,?)', ['10000','10','1','1','1000']).then(function(rows) {
+    return connection.query('insert into apartment (price, minStay, stars, numRatings, max) values (?,?,?,?,?)', [price, minStay, stars, numRatings, max]).then(function(rows) {
       return (rows)
     }).catch(function(error) {
       console.log(error);
@@ -50,9 +51,10 @@ const getDates = () => {
   })
 }
 
-const postDate = (payload) => {
+// '1/02/2019','1'
+const postDate = ({ date, apartmentId }) => {
 	return Promise.using(getSqlConnection(), function(connection) {
-    return connection.query('insert into dates (date, apartment_id) values (?,?)', ['1/02/2019','1']).then(function(rows) {
+    return connection.query('insert into dates (date, apartment_id) values (?,?)', [date, apartmentId]).then(function(rows) {
       return (rows)
     }).catch(function(error) {
       console.log(error);
