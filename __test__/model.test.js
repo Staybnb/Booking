@@ -1,3 +1,6 @@
+const dbConnection = require('../database/dbConnection.js')
+const db = require('../database/index.js')
+
 function sum(a, b) {
   return a + b;
 }
