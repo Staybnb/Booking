@@ -32,6 +32,7 @@ app.get('/api/listings', (req, res) => {
 })
 
 // { price, minStay, stars, numRatings, max }
+// '10000','10','1','1','1000'
 app.post('/api/listing', (req, res) => {
 	database.postListing(req.body).then((dataObj) => {
 		res.status(200).send(dataObj)
@@ -59,6 +60,7 @@ app.get('/api/dates', (req, res) => {
 })
 
 // { date, apartmentId }
+// '1/02/2019','1'
 app.post('/api/date', (req, res) => {
 	console.log('post date')
 	console.log(req.body);
