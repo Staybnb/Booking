@@ -49,6 +49,21 @@ app.delete('/api/listing/:id', (req, res) => {
 	});
 })
 
+app.get('/api/dates', (req, res) => {
+	database.getDates().then((dataObj)=>{
+		res.status(200).send(dataObj);
+	}).catch((err)=>{
+		res.status(500).send(err)
+	})
+})
+
+
+
+
+
+
+
+
 // TODO: perform db migration to make bookings table
 
 // app.get('/api/booking', (req, res) => {
