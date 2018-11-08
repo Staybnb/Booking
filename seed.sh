@@ -35572,3 +35572,5 @@ mysql -u root < schema/seed.sql
 mysql -u root < schema/seed.sql
 mysql -u root < schema/seed.sql
 mysql -u root < schema/seed.sql
+
+echo "hello hello"
