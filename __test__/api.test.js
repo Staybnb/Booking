@@ -24,3 +24,11 @@ describe('Test getting all dates', () => {
       return request(app).get('/api/dates').expect(200);
   });
 })
+
+// test create listing
+
+// test delete that listing
+
+// test create date
+
+// test delete that date
