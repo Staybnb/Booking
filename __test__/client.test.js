@@ -1,3 +1,5 @@
+// test rendering of component w jest and enzyme
+
 function sum(a, b) {
   return a + b;
 }
