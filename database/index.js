@@ -60,6 +60,17 @@ const postDate = (payload) => {
   })
 }
 
+const deleteDate = (id) => {
+	return Promise.using(getSqlConnection(), function(connection) {
+		return connection.query('delete from dates where id = ?', id.toString()).then((res) => {
+			return res;
+		}).catch((err) => {
+			return err;
+		})
+	})
+}
+
+
 module.exports.getListingData = getListingData;
 
 module.exports.getListings = getListings;
