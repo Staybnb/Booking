@@ -3,6 +3,7 @@ const legacy = require('./legacy.js')
 var Promise = require("bluebird");
 var getSqlConnection = require('./dbConnection.js');
 
+// performs joins to get all dates for listing
 const getListingData = (id) => {
 	return legacy.getListingData(id);
 }
@@ -36,6 +37,16 @@ const deleteListing = (id) => {
 			return err;
 		})
 	})
+}
+
+const postDate = (payload) => {
+	return Promise.using(getSqlConnection(), function(connection) {
+    return connection.query('insert into dates (date, apartment_id) values (?,?)', ['1/02/2019','1']).then(function(rows) {
+      return (rows)
+    }).catch(function(error) {
+      console.log(error);
+    });
+  })
 }
 
 module.exports.getListingData = getListingData;
