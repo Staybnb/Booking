@@ -35,12 +35,13 @@ const deleteListing = (id) => {
 	console.log(id);
 	return Promise.using(getSqlConnection(), function(connection) {
 		console.log('prom')
-		return connection.query('delete from apartment where id = ?', 10).then((res) => {
+		return connection.query('delete from apartment where id = ?', id.toString()).then((res) => {
 			console.log('hi');
 			console.log(res);
 			return res;
 		}).catch((err) => {
 			console.log('boo')
+			return err;
 		})
 	})
 }
