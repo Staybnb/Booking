@@ -31,6 +31,7 @@ app.get('/api/listings', (req, res) => {
 	})
 })
 
+// { price, minStay, stars, numRatings, max }
 app.post('/api/listing', (req, res) => {
 	database.postListing(req.body).then((dataObj) => {
 		res.status(200).send(dataObj)
@@ -57,6 +58,7 @@ app.get('/api/dates', (req, res) => {
 	})
 })
 
+// { date, apartmentId }
 app.post('/api/date', (req, res) => {
 	database.postListing(req.body).then((dataObj) => {
 		res.status(200).send(dataObj)
