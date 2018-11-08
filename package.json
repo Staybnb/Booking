@@ -12,7 +12,8 @@
     "list-pm2": "pm2 list",
     "pm2-server": "pm2 show server",
     "stop-pm2": "pm2 stop 0",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "seed": "node seed.js"
   },
   "repository": {
     "type": "git",
