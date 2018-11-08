@@ -39,6 +39,17 @@ const deleteListing = (id) => {
 	})
 }
 
+const getDates = () => {
+	console.log('db get dates')
+	return Promise.using(getSqlConnection(), function(connection) {
+    return connection.query('select * from dates').then(function(rows) {
+      return (rows)
+    }).catch(function(error) {
+      console.log(error);
+    });
+  })
+}
+
 const postDate = (payload) => {
 	return Promise.using(getSqlConnection(), function(connection) {
     return connection.query('insert into dates (date, apartment_id) values (?,?)', ['1/02/2019','1']).then(function(rows) {
@@ -55,4 +66,5 @@ module.exports.getListings = getListings;
 module.exports.postListing = postListing;
 module.exports.deleteListing = deleteListing;
 
-
+module.exports.getDates = getDates;
+module.exports.postDate = postDate;
