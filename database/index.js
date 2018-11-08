@@ -79,3 +79,4 @@ module.exports.deleteListing = deleteListing;
 
 module.exports.getDates = getDates;
 module.exports.postDate = postDate;
+module.exports.deleteDate = deleteDate;
