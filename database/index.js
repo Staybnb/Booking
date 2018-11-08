@@ -70,9 +70,10 @@ const deleteDate = (id) => {
 	})
 }
 
-
+// client api
 module.exports.getListingData = getListingData;
 
+// crud api
 module.exports.getListings = getListings;
 module.exports.postListing = postListing;
 module.exports.deleteListing = deleteListing;
