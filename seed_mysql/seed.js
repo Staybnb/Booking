@@ -1,7 +1,8 @@
 console.log('seeding db')
 
 const exec = require('child_process').exec;
-var yourscript = exec('sh seed.sh',
+console.log(__dirname)
+var yourscript = exec('sh ' + __dirname + '/seed.sh',
         (error, stdout, stderr) => {
             console.log(`${stdout}`);
             console.log(`${stderr}`);

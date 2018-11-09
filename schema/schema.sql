@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS booking;
 
 CREATE DATABASE booking;
@@ -9,10 +8,10 @@ CREATE TABLE apartment (
 
 	id int NOT NULL AUTO_INCREMENT,
 	price int NOT NULL,
-    max int NOT NULL,
-    minStay int NOT NULL,
-    stars dec(4,2) NOT NULL,
-    numRatings int NOT NULL,
+  max int NOT NULL,
+  minStay int NOT NULL,
+  stars dec(4,2) NOT NULL,
+  numRatings int NOT NULL,
 	PRIMARY KEY (id)
 
 );
