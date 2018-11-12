@@ -1,7 +1,7 @@
 USE booking
 
 LOAD DATA LOCAL INFILE  
-'/Users/benjaminmangold/HackReactor/sb-Booking/seed_mysql/sample.csv'
+'./sample.csv'
 INTO TABLE apartment  
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'

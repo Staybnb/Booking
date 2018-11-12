@@ -1,8 +1,7 @@
-console.log('seeding db')
-
 const exec = require('child_process').exec;
-console.log(__dirname)
-var yourscript = exec('mysql -u root --local-infile < /Users/benjaminmangold/HackReactor/sb-Booking/seed_mysql/seed.sql;',
+const cmd = 'mysql -u root --local-infile < ' + __dirname + '/seed.sql;'
+console.log(cmd)
+exec(cmd,
         (error, stdout, stderr) => {
             console.log(`${stdout}`);
             console.log(`${stderr}`);
