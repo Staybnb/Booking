@@ -27,4 +27,3 @@ CREATE TABLE dates (
 		ON DELETE CASCADE
 
 );
-
