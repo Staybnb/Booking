@@ -4,5 +4,3 @@ bundle.js
 Louis-FEC-Booking.pem
 *.pem
 *.csv
-seed_mongo/sample.csv
-seed_mysql/sample.csv 

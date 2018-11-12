@@ -15,7 +15,8 @@
     "test": "jest --detectOpenHandles",
     "seed_mysql": "node seed_mysql.js",
     "seed_mongo": "node seed_mongo.js",
-    "seed_apartment":"node generate_apartment_csv.js; node generate_apartment_csv.js; node generate_apartment_csv.js; node generate_apartment_csv.js; node generate_apartment_csv.js;"
+    "seed_apartment":"node generate_apartment_csv.js; node generate_apartment_csv.js; node generate_apartment_csv.js; node generate_apartment_csv.js; node generate_apartment_csv.js;",
+    "seed": "npm run seed_apartment; npm run seed_mysql; npm run seed_mongo"
   },
   "repository": {
     "type": "git",

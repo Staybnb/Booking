@@ -1,5 +1,8 @@
 const exec = require('child_process').exec;
-exec('mongoimport -d booking -c apartment --type csv --file /Users/benjaminmangold/HackReactor/sb-Booking/apartment.csv --headerline',
+
+console.log('seeding mongoDb from apartment.csv')
+
+exec('mongoimport -d booking -c apartment --type csv --file ' + __dirname + '/apartment.csv --headerline',
         (error, stdout, stderr) => {
             console.log(`${stdout}`);
             console.log(`${stderr}`);
