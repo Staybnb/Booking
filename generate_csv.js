@@ -12,7 +12,7 @@ var writer = csvWriter()
 // ===========================
 var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "max" ], separator: ', '})
 writer.pipe(fs.createWriteStream('out.csv'))
-for (let i = 0; i < 10000000; i++) {
+for (let i = 0; i < 1000; i++) {
   writer.write(['world', 'bar', 'one', 'two', 'three'])
 }
 writer.end()
