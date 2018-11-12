@@ -1,7 +1,7 @@
 USE booking
 
 LOAD DATA LOCAL INFILE  
-'./sample.csv'
+'./out2.csv'
 INTO TABLE apartment  
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
