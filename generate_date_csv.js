@@ -2,14 +2,6 @@ const faker = require('faker')
 const fs = require('fs')
 var csvWriter = require('csv-write-stream')
 var writer = csvWriter()
-// ______Default_Options______
-// {
-//   separator: ',',
-//   newline: '\n',
-//   headers: undefined,
-//   sendHeaders: true
-// }
-// ===========================
 
 // =============================================================
 // this script creates (and then appends) dates.csv
