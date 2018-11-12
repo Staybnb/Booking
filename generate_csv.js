@@ -11,72 +11,30 @@ var writer = csvWriter()
 // }
 // ===========================
 
-const numListings = 1000000
+// load 10 million rows
+const numPasses = 5;
+const numListings = 1000000;
+
 var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "max" ], separator: ', '})
-writer.pipe(fs.createWriteStream('out.csv'))
-let row = [];
+let writeStream = fs.createWriteStream('out2.csv', {flags: 'a'})
+writer.pipe(writeStream)
 
-for (let i = 0; i < numListings; i++) {
-  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
-  writer.write(row)
-}
-let used = process.memoryUsage().heapUsed / 1024 / 1024;
-console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
-for (let i = 0; i < numListings; i++) {
-  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
-  writer.write(row)
-}
-used = process.memoryUsage().heapUsed / 1024 / 1024;
-console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
-for (let i = 0; i < numListings; i++) {
-  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
-  writer.write(row)
-}
-used = process.memoryUsage().heapUsed / 1024 / 1024;
-console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
-for (let i = 0; i < numListings; i++) {
-  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
-  writer.write(row)
-}
-used = process.memoryUsage().heapUsed / 1024 / 1024;
-console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
-for (let i = 0; i < numListings; i++) {
-  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
-  writer.write(row)
-}
-used = process.memoryUsage().heapUsed / 1024 / 1024;
-console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
-for (let i = 0; i < numListings; i++) {
-  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
-  writer.write(row)
-}
-used = process.memoryUsage().heapUsed / 1024 / 1024;
-console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
-for (let i = 0; i < numListings; i++) {
-  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
-  writer.write(row)
-}
-used = process.memoryUsage().heapUsed / 1024 / 1024;
-console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
-for (let i = 0; i < numListings; i++) {
-  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
-  writer.write(row)
-}
-used = process.memoryUsage().heapUsed / 1024 / 1024;
-console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
-for (let i = 0; i < numListings; i++) {
-  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
-  writer.write(row)
-}
-used = process.memoryUsage().heapUsed / 1024 / 1024;
-console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
-for (let i = 0; i < numListings; i++) {
-  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
-  writer.write(row)
+let writeOneMillion = () => {
+  let row = [];
+  
+  for (let i = 0; i < numListings; i++) {
+    row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+    writer.write(row)
+  }
 }
 
-
+for (let j = 0; j < numPasses; j++) {
+  writeOneMillion();
+  let used = process.memoryUsage().heapUsed / 1024 / 1024;
+  console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+}
 writer.end()
+writer.destroy()
 
 // this file must generate a .csv file to be used by each db
 
