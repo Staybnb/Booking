@@ -1,6 +1,5 @@
 var mysqlP = require('promise-mysql');
 
-
 let stringParse = (data)=>{
   return JSON.parse(JSON.stringify(data))
 };

@@ -10,10 +10,12 @@ var writer = csvWriter()
 //   sendHeaders: true
 // }
 // ===========================
+
+const numListings = 1000000
 var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "max" ], separator: ', '})
 writer.pipe(fs.createWriteStream('out.csv'))
-for (let i = 0; i < 1000; i++) {
-  writer.write(['world', 'bar', 'one', 'two', 'three'])
+for (let i = 0; i < numListings; i++) {
+  writer.write([faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()])
 }
 writer.end()
 
