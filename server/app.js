@@ -13,7 +13,9 @@ app.use("default", morgan)
 app.use(express.static(path.join(__dirname + '/../client/dist')));
 
 app.get('/api/listingdata/:id', (req, res)=>{ 
+	console.log('!')
 	id = req.params.id
+	console.log(id)
 	database.getListingData(id).then((dataObj)=>{
 		res.status(200).send(dataObj);
 	}).catch((err)=>{

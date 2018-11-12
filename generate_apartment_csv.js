@@ -20,7 +20,7 @@ console.log('appending 5 million rows to apartment.csv')
 
 // load 5 million rows into apartment.csv
 const numPasses = 5;
-const numListings = 1000;
+const numListings = 1000000;
 
 var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "max" ], separator: ', '})
 let writeStream = fs.createWriteStream('apartment.csv', {flags: 'a'})
@@ -30,7 +30,7 @@ let writeOneMillion = () => {
   let row = [];
   
   for (let i = 0; i < numListings; i++) {
-    row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+    row = [faker.commerce.price(), faker.random.number() % 5, faker.random.number() % 5, faker.random.number() % 100, faker.random.number() % 12 + 6]
     writer.write(row)
   }
 }

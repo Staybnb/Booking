@@ -11,10 +11,10 @@ const getListingData = (id) => {
 
 const getListings = () => {
 	console.log('db get listings')
-	return Promise.using(getMongoConnection(), function(connection) {
-  // return Promise.using(getMySqlConnection(), function(connection) {
-    return connection.query('db.apartment.count()').then(function(rows) {
-    // return connection.query('select * from apartment limit 100').then(function(rows) {
+	// return Promise.using(getMongoConnection(), function(connection) {
+  return Promise.using(getMySqlConnection(), function(connection) {
+    // return connection.query('db.apartment.count()').then(function(rows) {
+    return connection.query('select * from apartment limit 100').then(function(rows) {
       console.log('!')
       console.log(rows)
       return (rows)

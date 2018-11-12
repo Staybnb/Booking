@@ -5,6 +5,7 @@ let stringParse = (data)=>{
 };
 
 var getListingData = (id) => { 
+	console.log('get lsiting data')
 	console.log('Database query', id)
 
 	let aptData = {dates: [], price: 0, id: 0, minStay: 0, stars: 0, numRatings: 0, max:0};
@@ -38,8 +39,13 @@ var getListingData = (id) => {
 		aptData.stars = data[0].stars;
 		aptData.numRatings = data[0].numRatings;
 
+		let NUM_DATES = 25
+		let i = 0;
 		data.forEach(({date}) => {
-			aptData.dates.push(date)
+			if (i < NUM_DATES) {
+				aptData.dates.push(date)
+				i++;
+			} 
 		});
 
 	}).then(()=>{

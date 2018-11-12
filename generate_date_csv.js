@@ -16,11 +16,11 @@ var writer = csvWriter()
 // this script creates, or appends data to apartment.csv
 // ===============================
 
-console.log('appending 5 million rows to apartment.csv')
+console.log('appending 5 million rows to dates.csv')
 
 // load 5 million rows into apartment.csv
 const numPasses = 5;
-const numListings = 1000;
+const numListings = 1000000;
 
 var writer = csvWriter({ headers: ["date", "apartment_id"], separator: ', '})
 let writeStream = fs.createWriteStream('dates.csv', {flags: 'a'})
@@ -30,7 +30,7 @@ let writeOneMillion = () => {
   let row = [];
   
   for (let i = 0; i < numListings; i++) {
-    row = [(faker.random.number() % 12) + '/' + (faker.random.number() % 30) + '/201' + (faker.random.number() % 9), faker.random.number() % 100000]
+    row = [(faker.random.number() % 11 + 1) + '/' + (faker.random.number() % 29 + 1) + '/201' + (faker.random.number() % 10), faker.random.number() % 1000]
     writer.write(row)
   }
 }

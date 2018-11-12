@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Promise = require('bluebird')
 const options = {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -39,7 +40,7 @@ const options = {
 const uri = 'mongodb://127.0.0.1:27017/booking'
 
 function getMongoConnection() {
-    return mongoose.createConnection(uri, options).disposer(function(connection) {
+    return Promise.mongoose.createConnection(uri, options).disposer(function(connection) {
       mongoose.releaseConnection(connection);
     })
 }
