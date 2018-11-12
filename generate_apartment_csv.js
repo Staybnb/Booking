@@ -20,7 +20,7 @@ console.log('appending 5 million rows to apartment.csv')
 
 // load 5 million rows into apartment.csv
 const numPasses = 5;
-const numListings = 1000000;
+const numListings = 1000;
 
 var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "max" ], separator: ', '})
 let writeStream = fs.createWriteStream('apartment.csv', {flags: 'a'})

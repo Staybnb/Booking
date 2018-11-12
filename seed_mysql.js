@@ -1,6 +1,6 @@
 const exec = require('child_process').exec;
 
-console.log('seeding mysql from apartment.csv')
+console.log('seeding mysql from apartment.csv and dates.csv')
 
 const cmd = 'mysql -u root --local-infile < ' + __dirname + '/seed.sql;'
 exec(cmd,
