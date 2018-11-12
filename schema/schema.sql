@@ -5,7 +5,6 @@ CREATE DATABASE booking;
 USE booking;
 
 CREATE TABLE apartment (
-
 	id int NOT NULL AUTO_INCREMENT,
 	price int NOT NULL,
   max int NOT NULL,
@@ -13,11 +12,9 @@ CREATE TABLE apartment (
   stars dec(4,2) NOT NULL,
   numRatings int NOT NULL,
 	PRIMARY KEY (id)
-
 );
 
 CREATE TABLE dates (
-
 	id int NOT NULL AUTO_INCREMENT,
 	date varchar (20) NOT NULL,
 	apartment_id int NOT NULL,
@@ -25,5 +22,4 @@ CREATE TABLE dates (
 	FOREIGN KEY (apartment_id)
 		REFERENCES apartment (id)
 		ON DELETE CASCADE
-
 );

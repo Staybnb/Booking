@@ -7,10 +7,10 @@ pool = mysql.createPool({
   connectionLimit: 10
 });
  
-function getSqlConnection() {
+function getMySqlConnection() {
   return pool.getConnection().disposer(function(connection) {
     pool.releaseConnection(connection);
   });
 }
  
-module.exports = getSqlConnection;
+module.exports = getMySqlConnection;
