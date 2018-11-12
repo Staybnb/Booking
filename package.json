@@ -14,7 +14,8 @@
     "stop-pm2": "pm2 stop 0",
     "test": "jest --detectOpenHandles",
     "seed_mysql": "node seed_mysql.js",
-    "seed_mongo": "node seed_mongo.js"
+    "seed_mongo": "node seed_mongo.js",
+    "seed_apartment":"node generate_apartment_csv.js; node generate_apartment_csv.js; node generate_apartment_csv.js; node generate_apartment_csv.js; node generate_apartment_csv.js;"
   },
   "repository": {
     "type": "git",

@@ -11,12 +11,17 @@ var writer = csvWriter()
 // }
 // ===========================
 
-// load 10 million rows
-const numPasses = 5;
+
+// ===============================
+// this script creates, or appends data to apartment.csv
+// ===============================
+
+// load 2 million rows into apartment.csv
+const numPasses = 2;
 const numListings = 1000000;
 
 var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "max" ], separator: ', '})
-let writeStream = fs.createWriteStream('out2.csv', {flags: 'a'})
+let writeStream = fs.createWriteStream('apartment.csv', {flags: 'a'})
 writer.pipe(writeStream)
 
 let writeOneMillion = () => {
