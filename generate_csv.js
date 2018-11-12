@@ -12,7 +12,9 @@ var writer = csvWriter()
 // ===========================
 var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "max" ], separator: ', '})
 writer.pipe(fs.createWriteStream('out.csv'))
-writer.write(['world', 'bar', 'one', 'two', 'three'])
+for (let i = 0; i < 1000000; i++) {
+  writer.write(['world', 'bar', 'one', 'two', 'three'])
+}
 writer.end()
 
 // this file must generate a .csv file to be used by each db
