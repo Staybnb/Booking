@@ -16,8 +16,10 @@ var writer = csvWriter()
 // this script creates, or appends data to apartment.csv
 // ===============================
 
-// load 2 million rows into apartment.csv
-const numPasses = 2;
+console.log('appending 5 million rows to apartment.csv')
+
+// load 5 million rows into apartment.csv
+const numPasses = 5;
 const numListings = 1000000;
 
 var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "max" ], separator: ', '})
