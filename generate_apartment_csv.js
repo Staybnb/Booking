@@ -17,7 +17,7 @@ var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "m
 let writeStream = fs.createWriteStream('apartment.csv', {flags: 'a'})
 writer.pipe(writeStream)
 
-let writeOneMillion = () => {
+const writeOneMillion = () => {
   let row = [];
   
   for (let i = 0; i < numListings; i++) {
