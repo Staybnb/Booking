@@ -13,9 +13,7 @@ app.use("default", morgan)
 app.use(express.static(path.join(__dirname + '/../client/dist')));
 
 app.get('/api/listingdata/:id', (req, res)=>{ 
-	console.log('!')
 	id = req.params.id
-	console.log(id)
 	database.getListingData(id).then((dataObj)=>{
 		res.status(200).send(dataObj);
 	}).catch((err)=>{
@@ -42,8 +40,6 @@ app.post('/api/listing', (req, res) => {
 })
 
 app.delete('/api/listing/:id', (req, res) => {
-	console.log('delete apartment listing')
-	console.log(req.params.id)
 	database.deleteListing(req.params.id).then((dataObj) => {
 		res.status(200).send(dataObj)
 	}).catch((err) => {
@@ -70,20 +66,6 @@ app.post('/api/date', (req, res) => {
 		res.status(500).send(err);
 	});
 })
-
-// TODO: perform db migration to make bookings table
-
-// app.get('/api/booking', (req, res) => {
-// 	console.log('get all bookings')
-// })
-
-// app.get('/api/booking/:aptId', (req, res) => {
-// 	console.log('get bookings by apartment')
-// })
-
-// app.post('/api/booking/:aptId', (req, res) => {
-// 	console.log('create a new booking for an apartment')
-// })
 
 app.get('/*', (req, res)=>{
 	res.sendFile(path.join(__dirname + '/../client/dist/index.html'))

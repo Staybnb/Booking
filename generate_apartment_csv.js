@@ -11,10 +11,9 @@ var writer = csvWriter()
 // }
 // ===========================
 
-
-// ===============================
-// this script creates, or appends data to apartment.csv
-// ===============================
+// =============================================================
+// this script creates (and then appends) apartment.csv
+// =============================================================
 
 console.log('appending 5 million rows to apartment.csv')
 
@@ -42,8 +41,3 @@ for (let j = 0; j < numPasses; j++) {
 }
 writer.end()
 writer.destroy()
-
-// apartment.csv
-// price, minStay, stars, numRatings, max 
-// 10, 1, 123, 10, 1, 90210  
-// ...
