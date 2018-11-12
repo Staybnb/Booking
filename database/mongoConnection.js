@@ -18,7 +18,7 @@ const options = {
 const uri = 'mongodb://127.0.0.1:27017/booking'
 
 function getMongoConnection() {
-    mongoose.createConnection(uri, options).disposer(function(connection) {
+    return mongoose.createConnection(uri, options).disposer(function(connection) {
       mongoose.releaseConnection(connection);
     })
 }
