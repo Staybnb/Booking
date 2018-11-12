@@ -11,12 +11,71 @@ var writer = csvWriter()
 // }
 // ===========================
 
-const numListings = 10000000
+const numListings = 1000000
 var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "max" ], separator: ', '})
 writer.pipe(fs.createWriteStream('out.csv'))
+let row = [];
+
 for (let i = 0; i < numListings; i++) {
-  writer.write([faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()])
+  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+  writer.write(row)
 }
+let used = process.memoryUsage().heapUsed / 1024 / 1024;
+console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+for (let i = 0; i < numListings; i++) {
+  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+  writer.write(row)
+}
+used = process.memoryUsage().heapUsed / 1024 / 1024;
+console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+for (let i = 0; i < numListings; i++) {
+  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+  writer.write(row)
+}
+used = process.memoryUsage().heapUsed / 1024 / 1024;
+console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+for (let i = 0; i < numListings; i++) {
+  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+  writer.write(row)
+}
+used = process.memoryUsage().heapUsed / 1024 / 1024;
+console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+for (let i = 0; i < numListings; i++) {
+  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+  writer.write(row)
+}
+used = process.memoryUsage().heapUsed / 1024 / 1024;
+console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+for (let i = 0; i < numListings; i++) {
+  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+  writer.write(row)
+}
+used = process.memoryUsage().heapUsed / 1024 / 1024;
+console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+for (let i = 0; i < numListings; i++) {
+  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+  writer.write(row)
+}
+used = process.memoryUsage().heapUsed / 1024 / 1024;
+console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+for (let i = 0; i < numListings; i++) {
+  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+  writer.write(row)
+}
+used = process.memoryUsage().heapUsed / 1024 / 1024;
+console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+for (let i = 0; i < numListings; i++) {
+  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+  writer.write(row)
+}
+used = process.memoryUsage().heapUsed / 1024 / 1024;
+console.log(`The script uses approximately ${Math.round(used * 100) / 100} MB`);
+for (let i = 0; i < numListings; i++) {
+  row = [faker.commerce.price(), faker.random.number(), faker.random.number(), faker.random.number(), faker.random.number()]
+  writer.write(row)
+}
+
+
 writer.end()
 
 // this file must generate a .csv file to be used by each db
