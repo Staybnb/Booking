@@ -11,7 +11,7 @@ var writer = csvWriter()
 // }
 // ===========================
 
-const numListings = 5000000
+const numListings = 10000000
 var writer = csvWriter({ headers: ["price", "minStay", "stars", "numRatings", "max" ], separator: ', '})
 writer.pipe(fs.createWriteStream('out.csv'))
 for (let i = 0; i < numListings; i++) {
