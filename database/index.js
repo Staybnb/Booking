@@ -1,6 +1,6 @@
 const legacy = require("./legacy.js");
 var Promise = require("bluebird");
-var getMySqlConnection = require("./mysqlConnection");
+var getMySqlConnection = require("./mysqlConnection.js");
 // var getMongoConnection = require("./mongoConnection"); // TODO = allow configurable mongo use
 
 // used by client
@@ -54,12 +54,16 @@ const deleteListing = id => {
 
 const getDates = () => {
   return Promise.using(getMySqlConnection(), function(connection) {
+    console.log('ho')
     return connection
-      .query("select * from dates")
+      .query("select * from dates limit 100")
       .then(function(rows) {
+        console.log('made it')
+        console.log(rows)
         return rows;
       })
       .catch(function(error) {
+        console.log('err')
         console.log(error);
       });
   });

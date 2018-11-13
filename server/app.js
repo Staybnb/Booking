@@ -12,7 +12,6 @@ app.use(cors());
 app.use("default", morgan);
 app.use(express.static(path.join(__dirname + "/../client/dist")));
 
-
 app.get("/api/listing/:id", (req, res) => {
   id = req.params.id;
   database
@@ -61,6 +60,7 @@ app.delete("/api/listing/:id", (req, res) => {
 });
 
 app.get("/api/dates", (req, res) => {
+  console.log('hi')
   database
     .getDates()
     .then(dataObj => {
