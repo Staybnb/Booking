@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const Promise = require('bluebird')
+const mongoose = require("mongoose");
+const Promise = require("bluebird");
 const options = {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -37,12 +37,14 @@ const options = {
 //     at onstat (/Users/benjaminmangold/HackReactor/sb-Booking/node_modules/send/index.js:725:14)
 //     at FSReqWrap.oncomplete (fs.js:152:21)
 
-const uri = 'mongodb://127.0.0.1:27017/booking'
+const uri = "mongodb://127.0.0.1:27017/booking";
 
 function getMongoConnection() {
-    return Promise.mongoose.createConnection(uri, options).disposer(function(connection) {
+  return Promise.mongoose
+    .createConnection(uri, options)
+    .disposer(function(connection) {
       mongoose.releaseConnection(connection);
-    })
+    });
 }
 
 module.exports = getMongoConnection;
