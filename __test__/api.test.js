@@ -50,7 +50,8 @@ describe("Test posting a listing", function() {
       .expect(200)
       .end(function(err, res) {
         if (err) return done(err);
-        listingId = JSON.parse(res.text).listingId;
+        console.log(res.text)
+        listingId = JSON.parse(res.text).insertId;
         console.log("created listing " + listingId);
         done();
       });
@@ -81,8 +82,8 @@ describe("Test posting a date", function() {
       .expect(200)
       .end(function(err, res) {
         if (err) return done(err);
-        dateId = JSON.parse(res.text).dateId;
-        console.log("created listing " + dateId);
+        dateId = JSON.parse(res.text).insertId;
+        console.log("created date " + dateId);
         done();
       });
   });
@@ -95,7 +96,7 @@ describe("Test deleting a date", function() {
       .expect(200)
       .end(function(err, res) {
         if (err) return done(err);
-        console.log("deleted listing " + dateId);
+        console.log("deleted date " + dateId);
         done();
       });
   });
