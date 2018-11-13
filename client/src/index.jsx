@@ -65,7 +65,7 @@ class Booking extends React.Component {
 				console.log(data)
 				this.setState(data)
 				var badDates = data.dates.map(date => {
-					return moment(date)
+					return moment(date.toString())
 				})
 				return badDates
 			}).catch((err)=>{

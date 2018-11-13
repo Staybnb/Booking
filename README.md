@@ -29,6 +29,8 @@ System Design
 `mysql -u root < schema.sql` no local mysql pw
 `mysql -u root -p < schema.sql` with local mysql pw
 
+`npm run seed` - creates, or appends data to apartment.csv and dates.csv
+
 ## Start Dev
 
 `npm run react-dev`
