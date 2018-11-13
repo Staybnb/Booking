@@ -58,8 +58,6 @@ app.get('/api/dates', (req, res) => {
 // { date, apartmentId }
 // '1/02/2019','1'
 app.post('/api/date', (req, res) => {
-	console.log('post date')
-	console.log(req.body);
 	database.postDate(req.body).then((dataObj) => {
 		res.status(200).send(dataObj)
 	}).catch((err) => {

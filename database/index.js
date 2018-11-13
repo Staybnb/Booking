@@ -15,8 +15,6 @@ const getListings = () => {
   return Promise.using(getMySqlConnection(), function(connection) {
     // return connection.query('db.apartment.count()').then(function(rows) {
     return connection.query('select * from apartment limit 100').then(function(rows) {
-      console.log('!')
-      console.log(rows)
       return (rows)
     }).catch(function(error) {
       console.log(error);

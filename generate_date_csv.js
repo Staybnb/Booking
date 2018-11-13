@@ -19,7 +19,6 @@ writer.pipe(writeStream)
 
 const writeOneMillion = () => {
   let row = [];
-  
   for (let i = 0; i < NUM_LISTINGS; i++) {
     row = [(faker.random.number() % 11 + 1) + '/' + (faker.random.number() % 29 + 1) + '/201' + (faker.random.number() % 10), faker.random.number() % 1000]
     writer.write(row)

@@ -29,8 +29,6 @@ var getListingData = (id) => {
 		return (aptDates);
 
 	}).then((raw)=>{
-		console.log('parsing')
-		console.log(raw)
 		let data = stringParse(raw)
 		aptData.price = data[0].price;
 		aptData.id = data[0].id;
