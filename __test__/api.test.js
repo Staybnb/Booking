@@ -76,6 +76,8 @@ describe("Test posting a date", function() {
   });
 });
 
+// TODO Test that duplicate date will be rejected
+
 describe("Test deleting a date", function() {
   it("should delete the inserted listing", function(done) {
     request(app)
