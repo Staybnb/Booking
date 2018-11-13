@@ -2,7 +2,7 @@
 //             IGNORE PLS, WORK IN PROGRESS
 // ==============================================================
 
-
+// Must replicate Promise implementation from mysqlConnection
 
 const mongoose = require("mongoose");
 const Promise = require("bluebird");
