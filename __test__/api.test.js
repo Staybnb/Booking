@@ -33,8 +33,6 @@ describe("Test getting all dates", () => {
   });
 });
 
-let listingId = 0;
-
 describe("Test posting a listing", function() {
   it("responds with json", function(done) {
     request(app)
@@ -50,7 +48,7 @@ describe("Test posting a listing", function() {
       .expect(200)
       .end(function(err, res) {
         if (err) return done(err);
-        console.log(res.text)
+        console.log(res.text);
         listingId = JSON.parse(res.text).insertId;
         console.log("created listing " + listingId);
         done();
