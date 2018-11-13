@@ -1,3 +1,9 @@
+// ==============================================================
+//             IGNORE PLS, WORK IN PROGRESS
+// ==============================================================
+
+
+
 const mongoose = require("mongoose");
 const Promise = require("bluebird");
 const options = {
