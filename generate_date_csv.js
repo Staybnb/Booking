@@ -9,7 +9,7 @@ var writer = csvWriter();
 
 console.log("appending 5 million rows to dates.csv");
 
-// load 5 million rows into apartment.csv
+// load 5 million rows into dates.csv
 const NUM_PASSES = 5;
 const NUM_LISTINGS = 1000000;
 
