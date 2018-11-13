@@ -35,3 +35,7 @@ System Design
 
 `npm run react-dev`
 `npm run server-dev`
+
+# Start Cockroach
+Initial Node
+$ cockroach start --insecure --listen-addr=localhost

@@ -5,3 +5,4 @@ Louis-FEC-Booking.pem
 *.pem
 *.csv
 schema/seed.sql
+cockroach-data
