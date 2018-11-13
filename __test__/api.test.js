@@ -35,7 +35,6 @@ describe("Test getting all dates", () => {
 
 let listingId = 0;
 
-// test create and delete listing
 describe("Test posting a listing", function() {
   it("responds with json", function(done) {
     request(app)
@@ -58,7 +57,6 @@ describe("Test posting a listing", function() {
   });
 });
 
-// test delete that listing
 describe("Test deleting a listing", function() {
   it("should delete the inserted listing", function(done) {
     request(app)
@@ -74,7 +72,6 @@ describe("Test deleting a listing", function() {
 
 let dateId = 0;
 
-// test create date
 describe("Test posting a date", function() {
   it("responds with json", function(done) {
     request(app)
@@ -91,7 +88,6 @@ describe("Test posting a date", function() {
   });
 });
 
-// test delete that date
 describe("Test deleting a date", function() {
   it("should delete the inserted listing", function(done) {
     request(app)
