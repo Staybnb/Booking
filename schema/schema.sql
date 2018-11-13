@@ -19,7 +19,6 @@ CREATE TABLE dates (
 	date varchar (20) NOT NULL,
 	apartment_id int NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (apartment_id)
-		REFERENCES apartment (id)
-		ON DELETE CASCADE
+	FOREIGN KEY (apartment_id) REFERENCES apartment (id)
+	ON DELETE CASCADE
 );

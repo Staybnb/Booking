@@ -1,3 +1,9 @@
+// ==============================================================
+//             IGNORE PLS, WORK IN PROGRESS
+// ==============================================================
+
+// Must kick off seeding of cockroach from csv file
+
 const exec = require("child_process").exec;
 const cmd = "";
 console.log(cmd);
