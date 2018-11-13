@@ -2,17 +2,18 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const database = require("../database/index.js");
 const express = require("express");
-const path = require("path");
 const morgan = require("morgan");
+const path = require("path");
 
 var app = express();
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use("default", morgan);
-
 app.use(express.static(path.join(__dirname + "/../client/dist")));
 
-app.get("/api/listingdata/:id", (req, res) => {
+
+app.get("/api/listing/:id", (req, res) => {
   id = req.params.id;
   database
     .getListingData(id)
@@ -81,6 +82,10 @@ app.post("/api/date", (req, res) => {
     .catch(err => {
       res.status(500).send(err);
     });
+});
+
+app.get("/api/*", (req, res) => {
+  res.send(404);
 });
 
 app.get("/*", (req, res) => {
