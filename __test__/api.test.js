@@ -25,8 +25,10 @@ describe('Test getting all dates', () => {
   });
 })
 
-// test create listing
-describe('Test posting a listing', function() {
+let insertId = 0;
+
+// test create and delete listing
+describe('Test posting and deleting a listing', function() {
   it('responds with json', function(done) {
     request(app)
       .post('/api/listing')
@@ -35,18 +37,26 @@ describe('Test posting a listing', function() {
       .expect(200)
       .end(function(err, res) {
         if (err) return done(err);
-        console.log('created listing')
-        console.log(res);
-
-
-
+        insertId = JSON.parse(res.text).insertId;
+        console.log('created listing ' + insertId)
         done();
       });
   });
 });
 
 // test delete that listing
-
+describe('Test posting and deleting a listing', function() {
+  it('should delete the inserted listing', function(done) {
+    request(app)
+      .delete('/api/listing/' + insertId)
+      .expect(200)
+      .end(function(err, res) {
+        if (err) return done(err);
+        console.log('deleted listing ' + insertId)
+        done();
+      })
+  })
+});
 // test create date
 describe('Test posting a listing', function() {
   it('responds with json', function(done) {
