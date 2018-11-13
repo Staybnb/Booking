@@ -1,0 +1,6 @@
+I181113 02:34:34.757831 1 util/log/clog.go:1134  [config] file created at: 2018/11/13 02:34:34
+I181113 02:34:34.757831 1 util/log/clog.go:1134  [config] running on machine: bmngld
+I181113 02:34:34.757831 1 util/log/clog.go:1134  [config] binary: CockroachDB CCL v2.0.5 (x86_64-apple-darwin15.6.0, built 2018/08/13 20:48:49, go1.10.3)
+I181113 02:34:34.757831 1 util/log/clog.go:1134  [config] arguments: [cockroach start]
+I181113 02:34:34.757831 1 util/log/clog.go:1134  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+Error: could not cleanup temporary directories from record file: could not lock temporary directory /Users/benjaminmangold/HackReactor/sb-Booking/cockroach-data/cockroach-temp906735317, may still be in use: IO error: While lock file: /Users/benjaminmangold/HackReactor/sb-Booking/cockroach-data/cockroach-temp906735317/TEMP_DIR.LOCK: Resource temporarily unavailable

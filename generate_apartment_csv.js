@@ -15,7 +15,7 @@ const numListings = 1000000;
 
 var writer = csvWriter({
   headers: ["price", "minStay", "stars", "numRatings", "max"],
-  separator: ", "
+  separator: ","
 });
 let writeStream = fs.createWriteStream("apartment.csv", { flags: "a" });
 writer.pipe(writeStream);

@@ -1,0 +1,34 @@
+I181113 02:36:12.197152 1 util/log/clog.go:1134  [config] file created at: 2018/11/13 02:36:12
+I181113 02:36:12.197152 1 util/log/clog.go:1134  [config] running on machine: bmngld
+I181113 02:36:12.197152 1 util/log/clog.go:1134  [config] binary: CockroachDB CCL v2.0.5 (x86_64-apple-darwin15.6.0, built 2018/08/13 20:48:49, go1.10.3)
+I181113 02:36:12.197152 1 util/log/clog.go:1134  [config] arguments: [cockroach start --insecure --store=node2]
+I181113 02:36:12.197152 1 util/log/clog.go:1134  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+W181113 02:36:12.197146 1 cli/start.go:909  RUNNING IN INSECURE MODE!
+
+- Your cluster is open for any client that can access <all your IP addresses>.
+- Any user, even root, can log in without providing a password.
+- Any user, connecting as root, can read or write any data in your cluster.
+- There is no network encryption nor authentication, and thus no confidentiality.
+
+Check out how to secure your cluster: https://www.cockroachlabs.com/docs/v2.0/secure-a-cluster.html
+W181113 02:36:12.197452 1 cli/start.go:812  Using the default setting for --cache (128 MiB).
+  A significantly larger value is usually needed for good performance.
+  If you have a dedicated server a reasonable setting is --cache=.25 (4.0 GiB).
+W181113 02:36:12.197480 1 cli/start.go:825  Using the default setting for --max-sql-memory (128 MiB).
+  A significantly larger value is usually needed in production.
+  If you have a dedicated server a reasonable setting is --max-sql-memory=.25 (4.0 GiB).
+I181113 02:36:12.197488 1 cli/start.go:923  CockroachDB CCL v2.0.5 (x86_64-apple-darwin15.6.0, built 2018/08/13 20:48:49, go1.10.3)
+I181113 02:36:12.301682 1 server/config.go:430  system total memory: 16 GiB
+I181113 02:36:12.301750 1 server/config.go:432  server configuration:
+max offset             500000000
+cache size             128 MiB
+SQL memory pool size   128 MiB
+scan interval          10m0s
+scan max idle time     200ms
+event log enabled      true
+I181113 02:36:12.301780 1 cli/start.go:796  process identity: uid 501 euid 501 gid 20 egid 20
+I181113 02:36:12.301795 1 cli/start.go:461  starting cockroach node
+I181113 02:36:12.302756 38 storage/engine/rocksdb.go:553  opening rocksdb instance at "/Users/benjaminmangold/HackReactor/sb-Booking/node2/cockroach-temp256695582"
+I181113 02:36:12.312631 38 server/server.go:734  [n?] monitoring forward clock jumps based on server.clock.forward_jump_check_enabled
+E181113 02:36:12.313015 1 cli/error.go:112  cockroach server exited with error: consider changing the port via --port: listen tcp :26257: bind: address already in use
+Error: cockroach server exited with error: consider changing the port via --port: listen tcp :26257: bind: address already in use

@@ -1,6 +1,9 @@
 const request = require("supertest");
 const app = require("../server/app");
 
+// make sure duplicate apartments can't get uploaded
+// mySQL
+
 describe("Test the root path", () => {
   test("It should response the GET method", () => {
     return request(app)

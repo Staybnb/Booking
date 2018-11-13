@@ -13,7 +13,7 @@ console.log("appending 5 million rows to dates.csv");
 const NUM_PASSES = 5;
 const NUM_LISTINGS = 1000000;
 
-var writer = csvWriter({ headers: ["date", "apartment_id"], separator: ", " });
+var writer = csvWriter({ headers: ["date", "apartment_id"], separator: "," });
 let writeStream = fs.createWriteStream("dates.csv", { flags: "a" });
 writer.pipe(writeStream);
 
