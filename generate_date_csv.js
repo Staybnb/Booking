@@ -7,7 +7,7 @@ var writer = csvWriter();
 // this script creates (and then appends) dates.csv
 // =============================================================
 
-console.log("appending 5 million rows to dates.csv");
+console.time("appending 5 million rows to dates.csv");
 
 // load 5 million rows into dates.csv
 const NUM_PASSES = 5;
@@ -41,6 +41,7 @@ for (let j = 0; j < NUM_PASSES; j++) {
   );
 }
 writer.end();
+console.timeEnd("appending 5 million rows to dates.csv");
 writer.destroy();
 
 // apartment.csv

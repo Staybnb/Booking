@@ -12,7 +12,8 @@
     "seed_apartment": "node generate_apartment_csv.js;",
     "seed_dates": "node generate_date_csv.js",
     "seed_tables": "npm run seed_apartment; npm run seed_dates",
-    "seed": "npm run seed_tables; npm run seed_mysql; npm run seed_mongo"
+    "seed": "node timer/start_timer.js ;  npm run seed_tables; npm run seed_tables; npm run seed_mysql; npm run seed_mongo; node timer/end_timer.js",
+    "timer": "node timer/start_timer.js; node timer/end_timer.js"
   },
   "repository": {
     "type": "git",
