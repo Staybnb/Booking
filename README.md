@@ -26,10 +26,11 @@ System Design
 
 ## Seed local DB
 
+### Reset mySQL
 `mysql -u root < schema.sql` no local mysql pw
 `mysql -u root -p < schema.sql` with local mysql pw
 
-`npm run seed` - creates, or appends data to apartment.csv and dates.csv
+`npm run seed` - creates, or appends data to apartment.csv and dates.csv. then seedes mySQL, mongo and cockroach
 
 ## Start Dev
 

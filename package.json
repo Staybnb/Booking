@@ -13,7 +13,9 @@
     "seed_dates": "node generate_date_csv.js",
     "seed_tables": "npm run seed_apartment; npm run seed_dates",
     "seed": "node timer/start_timer.js ;  npm run seed_tables; npm run seed_tables; npm run seed_mysql; npm run seed_mongo; node timer/end_timer.js",
-    "timer": "node timer/start_timer.js; node timer/end_timer.js"
+    "timer": "node timer/start_timer.js; node timer/end_timer.js",
+    "seed_a_lot": "npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables;"
+
   },
   "repository": {
     "type": "git",

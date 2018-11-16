@@ -5,7 +5,6 @@ let fs = require('fs')
 // stores the start time for a timer in a csv file
 // =============================================================
 
-
 console.log('stopping timer')
 const endTime = Date.now();
 
