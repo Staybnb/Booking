@@ -4,11 +4,11 @@ pool = mysql.createPool({
   host: "localhost",
   user: "root",
   database: "booking",
-  connectionLimit: 10
+  connectionLimit: 5
 });
 
 function getMySqlConnection() {
-  console.log('get')
+  // console.log('get')
   return pool.getConnection().disposer(function(connection) {
     pool.releaseConnection(connection);
   });

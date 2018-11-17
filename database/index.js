@@ -5,6 +5,7 @@ var getMySqlConnection = require("./mysqlConnection.js");
 
 // used by client
 const getListingData = id => {
+  // console.log('!')
   return legacy.getListingData(id);
 };
 
@@ -54,12 +55,12 @@ const deleteListing = id => {
 
 const getDates = () => {
   return Promise.using(getMySqlConnection(), function(connection) {
-    console.log('ho')
+    // console.log('ho')
     return connection
       .query("select * from dates limit 100")
       .then(function(rows) {
-        console.log('made it')
-        console.log(rows)
+        // console.log('made it')
+        // console.log(rows)
         return rows;
       })
       .catch(function(error) {

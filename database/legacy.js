@@ -5,8 +5,8 @@ let stringParse = data => {
 };
 
 var getListingData = id => {
-  console.log("get lsiting data");
-  console.log("Database query", id);
+  // console.log("get lsiting data");
+  // console.log("Database query", id);
 
   let aptData = {
     dates: [],

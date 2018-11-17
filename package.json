@@ -15,7 +15,6 @@
     "seed": "node timer/start_timer.js ;  npm run seed_tables; npm run seed_tables; npm run seed_mysql; npm run seed_mongo; node timer/end_timer.js",
     "timer": "node timer/start_timer.js; node timer/end_timer.js",
     "seed_a_lot": "npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables;"
-
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,7 @@
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
     "cors": "^2.8.4",
     "csv-write-stream": "^2.0.0",
     "express": "^4.16.4",
@@ -40,6 +40,7 @@
     "morgan": "^1.9.0",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.4",
+    "pg": "^7.6.1",
     "pm2": "^3.2.2",
     "promise-mongo": "^3.0.3",
     "promise-mysql": "^3.3.1",

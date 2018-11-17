@@ -1,12 +1,17 @@
 const bodyParser = require("body-parser");
+var compression = require('compression')
+
 const cors = require("cors");
-const database = require("../database/index.js");
+const database = require("../database/index.js"); // mysql connection
+// const database = require("../index.js");
+
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 
 var app = express();
 
+app.use(compression())
 app.use(bodyParser.json());
 app.use(cors());
 app.use("default", morgan);
