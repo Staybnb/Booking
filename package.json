@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/FangNYC/Booking#readme",
   "dependencies": {
+    "@newrelic/native-metrics": "^3.1.2",
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
@@ -39,6 +40,7 @@
     "mongoose": "^5.3.11",
     "morgan": "^1.9.0",
     "mysql": "^2.16.0",
+    "newrelic": "^4.11.0",
     "nodemon": "^1.18.4",
     "pg": "^7.6.1",
     "pm2": "^3.2.2",

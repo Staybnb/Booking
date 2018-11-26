@@ -3,6 +3,8 @@ var Promise = require("bluebird");
 var getMySqlConnection = require("./mysqlConnection.js");
 // var getMongoConnection = require("./mongoConnection"); // TODO = allow configurable mongo use
 
+
+
 // used by client
 const getListingData = id => {
   // console.log('!')
@@ -10,7 +12,7 @@ const getListingData = id => {
 };
 
 const getListings = () => {
-  console.log("db get listings");
+  // console.log("db get listings");
   return Promise.using(getMySqlConnection(), function(connection) {
     return connection
       .query("select * from apartment limit 100")

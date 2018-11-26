@@ -1,5 +1,21 @@
 var mysqlP = require("promise-mysql");
 
+
+// pool = mysql.createPool({
+//   host: "localhost",
+//   user: "root",
+//   database: "booking",
+//   connectionLimit: 15
+// });
+
+function getMySqlConnection() {
+  // console.log('get')
+  return pool.getConnection().disposer(function(connection) {
+    pool.releaseConnection(connection);
+  });
+}
+
+
 let stringParse = data => {
   return JSON.parse(JSON.stringify(data));
 };
@@ -19,7 +35,7 @@ var getListingData = id => {
   };
 
   return mysqlP
-    .createConnection({
+    .getMySqlConnection({
       host: "localhost",
       user: "root",
       database: "booking"

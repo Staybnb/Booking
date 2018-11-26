@@ -36,24 +36,21 @@ pool.connect(function (err, client, done) {
     async.waterfall([
             function (next) {
                 // Create the 'accounts' table.
-                client.query('CREATE TABLE IF NOT EXISTS apartment (id INT PRIMARY KEY AUTO_INCREMENT, price INT, max INT, minStay INT, );', next);
+                client.query('CREATE TABLE IF NOT EXISTS apartment (id INT PRIMARY KEY AUTO_INCREMENT, price INT, max INT, minStay INT, stars INT, numRatings INT);', next);
             },
-            function (results, next) {
-                // Insert two rows into the 'accounts' table.
-                client.query('INSERT INTO accounts (id, balance) VALUES (1, 1000), (2, 250);', next);
+            function (next) {
+                // Create the 'accounts' table.
+                client.query('CREATE TABLE IF NOT EXISTS apartment (id INT PRIMARY KEY AUTO_INCREMENT, date INT, max INT, minStay INT, );', next);
             },
-            function (results, next) {
-                // Print out account balances.
-                client.query('SELECT id, balance FROM accounts;', next);
-            },
+
         ],
         function (err, results) {
             if (err) {
-                console.error('Error inserting into and selecting from accounts: ', err);
+                console.error('Error createing tables apartment and dates: ', err);
                 finish();
             }
 
-            console.log('Initial balances:');
+            console.log('Init:');
             results.rows.forEach(function (row) {
                 console.log(row);
             });

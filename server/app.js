@@ -1,5 +1,7 @@
+require('newrelic');
+
 const bodyParser = require("body-parser");
-var compression = require('compression')
+var compression = require('compression');
 
 const cors = require("cors");
 const database = require("../database/index.js"); // mysql connection
@@ -30,6 +32,7 @@ app.get("/api/listing/:id", (req, res) => {
 });
 
 app.get("/api/listings", (req, res) => {
+  console.log('get listings')
   database
     .getListings()
     .then(dataObj => {
