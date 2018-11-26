@@ -2,14 +2,14 @@ const legacy = require("./legacy.js");
 var Promise = require("bluebird");
 var getMySqlConnection = require("./mysqlConnection.js");
 // var getMongoConnection = require("./mongoConnection"); // TODO = allow configurable mongo use
-
+var cockroach = require('../cockroachDB/index.js')
 // used by client
 const getListingData = id => {
   return legacy.getListingData(id);
 };
 
 const getListings = () => {
-  // console.log("db get listings");
+  console.log("db get listings");
   return Promise.using(getMySqlConnection(), function(connection) {
     return connection
       .query("select * from apartment limit 100")
@@ -20,6 +20,7 @@ const getListings = () => {
         console.log(error);
       });
   });
+  // return cockroach.getListings();
 };
 
 // '10000','10','1','1','1000'

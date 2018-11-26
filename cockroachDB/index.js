@@ -1,91 +1,131 @@
-var async = require("async");
-var fs = require("fs");
-var pg = require("pg");
+var seed = require("./seed.js").connectAndSeed;
+var pool = require("./connection.js").pool;
 
-// Connect to the "booking" database.
+// seed(pool)
 
-// NOTE this user does not have root permissions
-// 'booking' db must exist, and db permissions must be granted to user
+function getListings() {
+  query("select * from apartment limit 100", result => {
+    console.log(result.rows);
+    return result;
+  });
+}
 
-var config = {
-  user: "maxroach",
-  host: "104.248.111.122",
-  database: "booking",
-  port: 26257,
-  ssl: {
-    ca: fs.readFileSync("./certs/ca.crt").toString(),
-    key: fs.readFileSync("./certs/client.maxroach.key").toString(),
-    cert: fs.readFileSync("./certs/client.maxroach.crt").toString()
-  }
-};
+function postListing({ price, minStay, stars, numRatings, max }) {
+  query(
+    `insert into apartment (price, minStay, stars, numRatings, max) values (${price},${minStay},${stars},${numRatings},${max}) returning id`,
+    result => {
+      console.log(result.rows);
+      return result;
+    }
+  );
+}
 
-// Create a pool.
-var pool = new pg.Pool(config);
+function postListingId({ id, price, minStay, stars, numRatings, max }) {
+  query(
+    `insert into apartment (id, price, minStay, stars, numRatings, max) values (${id}, ${price},${minStay},${stars},${numRatings},${max}) returning id`,
+    result => {
+      console.log(result.rows);
+      return result;
+    }
+  );
+}
 
-connectAndSeed()
+function deleteListing({ id }) {
+  query(`delete from apartment where id = ${id}`, result => {
+    console.log(result);
+    return result;
+  });
+}
 
-function connectAndSeed() {
-  // create and seed tables with a certain row
+function getDates() {
+  query("select * from dates limit 100", result => {
+    console.log(result.rows);
+    return result;
+  });
+}
+
+function postDate({ date, apartmentId }) {
+  query(
+    `insert into dates (date, apartment_id) values ('${date}',${apartmentId})`,
+    result => {
+      console.log(result.rows);
+      return result;
+    }
+  );
+}
+
+function deleteDate({ id }) {
+  query(`delete from dates where id = ${id}`, result => {
+    console.log(result);
+    return result;
+  });
+}
+
+
+function query(query, cb) {
   pool.connect(function(err, client, done) {
     // Close communication with the database and exit.
     var finish = function() {
       done();
       process.exit();
     };
-  
+    
     if (err) {
       console.error("could not connect to cockroachdb", err);
       finish();
     }
-    async.waterfall(
-      [ 
-        function(next) {
-          client.query("DROP TABLE IF EXISTS dates", next)
-        },
-        function(results, next) {
-          client.query("DROP TABLE IF EXISTS apartment", next);
-        },
-        function(results, next) {
-          // Create the 'apartment' table.
-          client.query(
-            "CREATE TABLE IF NOT EXISTS apartment (id SERIAL PRIMARY KEY , price INT, max INT, minStay INT, stars INT, numRatings INT);",
-            next
-          );
-        },
-        function(results, next) {
-          // Create the 'dates' table.
-          client.query(
-            "CREATE TABLE IF NOT EXISTS dates (id SERIAL PRIMARY KEY , date VARCHAR(20), apartment_id INT REFERENCES apartment (id) ON DELETE CASCADE);",
-            next
-          );
-        },
-        function(results, next) {
-  
-          client.query(
-            "INSERT INTO apartment (id, price, minStay, stars, numRatings, max) VALUES ('1', '40', '2', '4', '78', '4') returning id", 
-            next
-          );
-        },
-        function(results, next) {
-          client.query(
-            `INSERT INTO dates (date, apartment_id) VALUES ('11/1/2018','${results.rows[0].id}')`,
-            next
-          )
-        }
-      ],
-      function(err, results) {
-        if (err) {
-          console.error("Error createing tables apartment and dates: ", err);
-          finish();
-        }
-  
-        console.log("Init:");
-        results.rows.forEach(function(row) {
-          console.log(row);
-        });
-  
-        finish();
-      }
-    );
+    
+    client.query(query, (err, res) => {
+      if (err) throw err;
+      // console.log(res.rows)
+      cb(res);
+      finish();
+    });
   });
 }
+
+// crud api
+module.exports.getListings = getListings;
+module.exports.postListing = postListing;
+module.exports.postListingId = postListingId;
+module.exports.deleteListing = deleteListing;
+
+module.exports.getDates = getDates;
+module.exports.postDate = postDate;
+module.exports.deleteDate = deleteDate;
+
+
+
+// deleteDate({ id: '403701066510532609' })
+
+// var testDate = {
+//   date:'2019-02-01',
+//   apartmentId: '1'
+// }
+// postDate(testDate);
+
+// getDates();
+
+// var testDelete = {
+//   id: "1"
+// }
+// deleteListing(testDelete)
+
+// var testPost = {
+//   price: "10",
+//   minStay: "1",
+//   stars: "5",
+//   numRatings: "1",
+//   max: "5"
+// }
+// postListing(testPost);
+
+// var testPostId = {
+//   id: "1",
+//   price: "10",
+//   minStay: "1",
+//   stars: "5",
+//   numRatings: "1",
+//   max: "5"
+// }
+// postListingId(testPostId);
