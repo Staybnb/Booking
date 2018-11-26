@@ -4,4 +4,4 @@
 
 2) Populate certs/ and my-safe-directory/ 
 
-cockroach sql --certs-dir=certs --host=104.248.111.122
+cockroach sql --certs-dir=certs --host=<any-node-ip>

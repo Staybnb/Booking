@@ -3,7 +3,7 @@
 
 Booking Component Referencing AirBnB 
 
-React, Node.js, MySQL
+React, Node.js, MySQL, MongoDB, CockroachDB
 
 ## FangNYC fork by Ben Mangold
 
@@ -30,31 +30,13 @@ System Design
 `mysql -u root < schema.sql` no local mysql pw
 `mysql -u root -p < schema.sql` with local mysql pw
 
-`npm run seed` - creates, or appends data to apartment.csv and dates.csv. then seedes mySQL, mongo and cockroach
+`npm run seed` - creates, or appends data to apartment.csv and dates.csv. then seedes mySQL and mongoDB
 
 ## Start Dev
 
 `npm run react-dev`
 `npm run server-dev`
 
-# Start Cockroach
-Initialize First Node
-$ cockroach start --insecure --listen-addr=localhost
+## Cockroach DB
 
-Enter SQL client
-$ cockroach sql --insecure
-
-create and use booking db
-> create database booking;
-> use booking;
-
-Seed apartment table from S3
-
-IMPORT TABLE apartment(
-  price string NOT NULL,
-	max  string,
-	minStay string,
-	stars string,
-	numRatings string
-)
-CSV DATA ('https://s3.amazonaws.com/cockroach-test-seed/apartment.csv');
+This app can utilize a cockroachDB cluster deployed on Digital Ocean. See ROACH_README.md for more details

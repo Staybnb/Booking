@@ -1,12 +1,6 @@
 var mysqlP = require("promise-mysql");
 
-
-// pool = mysql.createPool({
-//   host: "localhost",
-//   user: "root",
-//   database: "booking",
-//   connectionLimit: 15
-// });
+// TODO - Refactor to implement connection pool
 
 function getMySqlConnection() {
   // console.log('get')
