@@ -8,3 +8,4 @@ schema/seed.sql
 certs
 my-safe-directory
 newrelic.js
+newrelic_agent.log
