@@ -7,14 +7,14 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "test": "jest --detectOpenHandles",
+    "seed": "node timer/start_timer.js ;  npm run seed_tables; npm run seed_tables; npm run seed_mysql; npm run seed_mongo; node timer/end_timer.js",
     "seed_mysql": "node seed_mysql.js",
     "seed_mongo": "node seed_mongo.js",
     "seed_apartment": "node generate_apartment_csv.js;",
     "seed_dates": "node generate_date_csv.js",
     "seed_tables": "npm run seed_apartment; npm run seed_dates",
-    "seed": "node timer/start_timer.js ;  npm run seed_tables; npm run seed_tables; npm run seed_mysql; npm run seed_mongo; node timer/end_timer.js",
-    "timer": "node timer/start_timer.js; node timer/end_timer.js",
-    "seed_a_lot": "npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables;"
+    "seed_a_lot": "npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables; npm run seed_tables;",
+    "timer": "node timer/start_timer.js; node timer/end_timer.js"
   },
   "repository": {
     "type": "git",
