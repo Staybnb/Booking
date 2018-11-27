@@ -44,7 +44,7 @@ function connectAndSeed(pool) {
         function(results, next) {
   
           client.query(
-            "INSERT INTO apartment (id, price, minStay, stars, numRatings, max) VALUES ('1', '40', '2', '4', '78', '4') returning id", 
+            "INSERT INTO apartment (id, price, minStay, stars, numRatings, max) VALUES ('0', '40', '2', '4', '78', '4') returning id", 
             next
           );
         },
@@ -71,6 +71,8 @@ function connectAndSeed(pool) {
     );
   });
 }
+
+connectAndSeed(pool)
 
 // client api
 module.exports.connectAndSeed = connectAndSeed;

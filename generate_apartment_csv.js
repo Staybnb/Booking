@@ -14,7 +14,7 @@ const numPasses = 5;
 const ONE_MILLION = 1000000;
 
 var writer = csvWriter({
-  headers: ["price", "minStay", "stars", "numRatings", "max"],
+  headers: ["id","price", "minStay", "stars", "numRatings", "max"],
   separator: ","
 });
 let writeStream = fs.createWriteStream("apartment.csv", { flags: "a" });
@@ -25,6 +25,7 @@ const writeOneMillion = () => {
 
   for (let i = 0; i < ONE_MILLION; i++) {
     row = [
+      faker.random.number() % 1000,
       faker.commerce.price(),
       faker.random.number() % 5,
       faker.random.number() % 5,

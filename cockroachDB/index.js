@@ -32,11 +32,15 @@ function getListings() {
 
 function postListing({ price, minStay, stars, numRatings, max }) {
   return new Promise((resolve, reject) => {
+    console.log('posting')
     query(
       `insert into apartment (price, minStay, stars, numRatings, max) values (${price},${minStay},${stars},${numRatings},${max}) returning id`,
       (err, result) => {
-        if (err) reject(err);
-        else resolve(result.rows);
+        if (err) {reject(err);}
+        else {
+          console.log('resolving')
+          resolve(result.rows);
+        }
       }
     );
   });
@@ -73,7 +77,6 @@ function getDates() {
 }
 
 function postDate({ date, apartmentId }) {
-  console.log('query')
   return new Promise((resolve, reject) => {
     query(
       `insert into dates (date, apartment_id) values ('${date}',${apartmentId})`,
