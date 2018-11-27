@@ -1,6 +1,8 @@
 var pg = require("pg");
 var fs = require("fs");
 
+console.log('attempting connection to cockroachdb')
+
 // Connect to the "booking" database.
 
 // ---------- NOTE this user does not have root permissions

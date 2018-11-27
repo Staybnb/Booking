@@ -36,12 +36,12 @@ var getListingData = id => {
     })
     .then(conn => {
       let aptDates = conn.query(`
-		SELECT *
-		FROM apartment t1
-		INNER JOIN dates t2 
-		ON t1.id = t2.apartment_id
-		WHERE t1.id=${id};
-		`);
+      SELECT *
+      FROM apartment t1
+      INNER JOIN dates t2 
+      ON t1.id = t2.apartment_id
+      WHERE t1.id=${id};
+      `);
 
       conn.end();
       return aptDates;

@@ -2,10 +2,9 @@ require('newrelic');
 
 const bodyParser = require("body-parser");
 var compression = require('compression');
-
 const cors = require("cors");
-const database = require("../database/index.js"); // mysql connection
-// const database = require("../index.js");
+// const database = require("../database/index.js"); // mysql connection
+const database = require("../cockroachDB/index.js");
 
 const express = require("express");
 const morgan = require("morgan");
@@ -21,9 +20,11 @@ app.use(express.static(path.join(__dirname + "/../client/dist")));
 
 app.get("/api/listing/:id", (req, res) => {
   id = req.params.id;
+  console.log(id)
   database
     .getListingData(id)
     .then(dataObj => {
+      console.log(dataObj)
       res.status(200).send(dataObj);
     })
     .catch(err => {
@@ -36,6 +37,7 @@ app.get("/api/listings", (req, res) => {
   database
     .getListings()
     .then(dataObj => {
+      console.log('hi!')
       res.status(200).send(dataObj);
     })
     .catch(err => {
@@ -48,6 +50,18 @@ app.get("/api/listings", (req, res) => {
 app.post("/api/listing", (req, res) => {
   database
     .postListing(req.body)
+    .then(dataObj => {
+      res.status(200).send(dataObj);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+});
+
+// posts a listing with a specified id
+app.post("/api/listingId", (req, res) => {
+  database
+    .postListingId(req.body)
     .then(dataObj => {
       res.status(200).send(dataObj);
     })
@@ -82,9 +96,12 @@ app.get("/api/dates", (req, res) => {
 // { date, apartmentId }
 // '1/02/2019','1'
 app.post("/api/date", (req, res) => {
+  console.log('hi')
+  console.log(req.body)
   database
     .postDate(req.body)
     .then(dataObj => {
+      console.log(dataObj)
       res.status(200).send(dataObj);
     })
     .catch(err => {

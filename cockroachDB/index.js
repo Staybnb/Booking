@@ -1,88 +1,101 @@
-var seed = require("./seed.js").connectAndSeed;
 var pool = require("./connection.js").pool;
+var query = require('./query.js').query
 
-// seed(pool)
+function getListingData(id) {
+  return new Promise((resolve, reject) => {
+    console.log('querying listing ' + id)
+    query(`
+      SELECT * FROM apartment t1 
+      INNER JOIN dates t2 ON t1.id = t2.apartment_id
+		  WHERE t1.id=${id};
+		`, (err, result) => {
+      if (err) {
+        console.log(err)
+        reject(err); 
+      }
+      else {
+        console.log(result.rows);
+        resolve(result.rows);
+      }
+    });
+  });
+}
 
 function getListings() {
-  query("select * from apartment limit 100", result => {
-    console.log(result.rows);
-    return result;
+  return new Promise((resolve, reject) => {
+    query("select * from apartment limit 100", (err, result) => {
+      if (err) reject(err);
+      else resolve(result.rows);
+    });
   });
 }
 
 function postListing({ price, minStay, stars, numRatings, max }) {
-  query(
-    `insert into apartment (price, minStay, stars, numRatings, max) values (${price},${minStay},${stars},${numRatings},${max}) returning id`,
-    result => {
-      console.log(result.rows);
-      return result;
-    }
-  );
+  return new Promise((resolve, reject) => {
+    query(
+      `insert into apartment (price, minStay, stars, numRatings, max) values (${price},${minStay},${stars},${numRatings},${max}) returning id`,
+      (err, result) => {
+        if (err) reject(err);
+        else resolve(result.rows);
+      }
+    );
+  });
 }
 
 function postListingId({ id, price, minStay, stars, numRatings, max }) {
-  query(
-    `insert into apartment (id, price, minStay, stars, numRatings, max) values (${id}, ${price},${minStay},${stars},${numRatings},${max}) returning id`,
-    result => {
-      console.log(result.rows);
-      return result;
-    }
-  );
+  return new Promise((resolve, reject) => {
+    query(
+      `insert into apartment (id, price, minStay, stars, numRatings, max) values (${id}, ${price},${minStay},${stars},${numRatings},${max}) returning id`,
+      (err, result) => {
+        if (err) reject(err);
+        else resolve(result.rows);
+      }
+    );
+  });
 }
 
 function deleteListing({ id }) {
-  query(`delete from apartment where id = ${id}`, result => {
-    console.log(result);
-    return result;
+  return new Promise((resolve, reject) => {
+    query(`delete from apartment where id = ${id}`, (err, result) => {
+      if (err) reject(err);
+      else resolve(result.rows);
+    });
   });
 }
 
 function getDates() {
-  query("select * from dates limit 100", result => {
-    console.log(result.rows);
-    return result;
+  return new Promise((resolve, reject) => {
+    query("select * from dates limit 100", (err, result) => {
+      if (err) reject(err);
+      else resolve(result.rows);
+    });
   });
 }
 
 function postDate({ date, apartmentId }) {
-  query(
-    `insert into dates (date, apartment_id) values ('${date}',${apartmentId})`,
-    result => {
-      console.log(result.rows);
-      return result;
-    }
-  );
+  console.log('query')
+  return new Promise((resolve, reject) => {
+    query(
+      `insert into dates (date, apartment_id) values ('${date}',${apartmentId})`,
+      (err, result) => {
+        if (err) reject(err);
+        else resolve(result);
+      }
+    );
+  });
 }
 
 function deleteDate({ id }) {
-  query(`delete from dates where id = ${id}`, result => {
-    console.log(result);
-    return result;
-  });
-}
-
-
-function query(query, cb) {
-  pool.connect(function(err, client, done) {
-    // Close communication with the database and exit.
-    var finish = function() {
-      done();
-      process.exit();
-    };
-    
-    if (err) {
-      console.error("could not connect to cockroachdb", err);
-      finish();
-    }
-    
-    client.query(query, (err, res) => {
-      if (err) throw err;
-      // console.log(res.rows)
-      cb(res);
-      finish();
+  return new Promise((resolve, reject) => {
+    query(`delete from dates where id = ${id}`, result => {
+      if (err) reject(err);
+      else resolve(result.rows);
     });
   });
 }
+
+// client api
+module.exports.getListingData = getListingData;
 
 // crud api
 module.exports.getListings = getListings;
@@ -94,7 +107,7 @@ module.exports.getDates = getDates;
 module.exports.postDate = postDate;
 module.exports.deleteDate = deleteDate;
 
-
+// ----------- TEST VALUES ----------------
 
 // deleteDate({ id: '403701066510532609' })
 
@@ -129,3 +142,5 @@ module.exports.deleteDate = deleteDate;
 //   max: "5"
 // }
 // postListingId(testPostId);
+
+// ----------------------------------------
