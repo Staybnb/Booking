@@ -1,8 +1,7 @@
 const legacy = require("./legacy.js");
 var Promise = require("bluebird");
 var getMySqlConnection = require("./mysqlConnection.js");
-// var getMongoConnection = require("./mongoConnection"); // TODO = allow configurable mongo use
-var cockroach = require('../cockroachDB/index.js')
+
 // used by client
 const getListingData = id => {
   return legacy.getListingData(id);
@@ -16,11 +15,10 @@ const getListings = () => {
       .then(function(rows) {
         return rows;
       })
-      .catch(function(error) {
-        console.log(error);
+      .catch(function(err) {
+        console.log(err);
       });
   });
-  // return cockroach.getListings();
 };
 
 // '10000','10','1','1','1000'
@@ -34,8 +32,9 @@ const postListing = ({ price, minStay, stars, numRatings, max }) => {
       .then(function(rows) {
         return rows;
       })
-      .catch(function(error) {
-        console.log(error);
+      .catch(function(err) {
+        console.log(err);
+        return err
       });
   });
 };
@@ -64,11 +63,12 @@ const getDates = () => {
       .catch(function(error) {
         console.log('err')
         console.log(error);
+        return error
       });
   });
 };
 
-// '1/02/2019','1'
+// '2019-01-02','1'
 const postDate = ({ date, apartmentId }) => {
   return Promise.using(getMySqlConnection(), function(connection) {
     return connection
@@ -81,6 +81,7 @@ const postDate = ({ date, apartmentId }) => {
       })
       .catch(function(error) {
         console.log(error);
+        return error
       });
   });
 };

@@ -8,7 +8,6 @@ pool = mysql.createPool({
 });
 
 function getMySqlConnection() {
-  // console.log('get')
   return pool.getConnection().disposer(function(connection) {
     pool.releaseConnection(connection);
   });

@@ -82,7 +82,6 @@ app.delete("/api/listing/:id", (req, res) => {
 });
 
 app.get("/api/dates", (req, res) => {
-  console.log('hi')
   database
     .getDates()
     .then(dataObj => {
@@ -96,12 +95,9 @@ app.get("/api/dates", (req, res) => {
 // { date, apartmentId }
 // '1/02/2019','1'
 app.post("/api/date", (req, res) => {
-  console.log('hi')
-  console.log(req.body)
   database
     .postDate(req.body)
     .then(dataObj => {
-      console.log(dataObj)
       res.status(200).send(dataObj);
     })
     .catch(err => {

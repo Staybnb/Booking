@@ -1,12 +1,14 @@
 'use strict';
 
+// this module provides data generation functions for Artillery load tests
+// https://artillery.io/blog/using-fakerjs-with-artillery
+
 module.exports = {
   generateApartmentData,
   generateApartmentDataId,
   generateDateData
 };
 
-// Make sure to "npm install faker" first.
 const faker = require('faker');
 
 var aptIdCounter = 1;

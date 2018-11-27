@@ -1,4 +1,3 @@
-var pool = require("./connection.js").pool;
 var query = require('./query.js').query
 
 function getListingData(id) {

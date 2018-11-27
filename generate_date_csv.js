@@ -20,15 +20,6 @@ writer.pipe(writeStream);
 const writeOneMillion = () => {
   let row = [];
   for (let i = 0; i < NUM_LISTINGS; i++) {
-    // row = [
-    //   (faker.random.number() % 11) +
-    //     1 +
-    //     "/" +
-    //     ((faker.random.number() % 29) + 1) +
-    //     "/201" +
-    //     (faker.random.number() % 10),
-    //   faker.random.number() % 1000
-    // ];
     row = [
       `201${faker.random.number() % 10}-${(faker.random.number() % 11) +1}-${((faker.random.number() % 29) + 1)}`,
       faker.random.number() % 1000
@@ -47,8 +38,3 @@ for (let j = 0; j < NUM_PASSES; j++) {
 writer.end();
 console.timeEnd("appending 5 million rows to dates.csv");
 writer.destroy();
-
-// apartment.csv
-// price, minStay, stars, numRatings, max
-// 10, 1, 123, 10, 1, 90210
-// ...
