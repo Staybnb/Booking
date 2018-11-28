@@ -1,7 +1,7 @@
-require('newrelic');
+require("newrelic");
 
 const bodyParser = require("body-parser");
-var compression = require('compression');
+var compression = require("compression");
 const cors = require("cors");
 // const database = require("../database/index.js"); // mysql connection
 const database = require("../cockroachDB/index.js");
@@ -12,7 +12,7 @@ const path = require("path");
 
 var app = express();
 
-app.use(compression())
+app.use(compression());
 app.use(bodyParser.json());
 app.use(cors());
 app.use("default", morgan);
@@ -20,11 +20,9 @@ app.use(express.static(path.join(__dirname + "/../client/dist")));
 
 app.get("/api/listing/:id", (req, res) => {
   id = req.params.id;
-  console.log(id)
   database
     .getListingData(id)
     .then(dataObj => {
-      console.log(dataObj)
       res.status(200).send(dataObj);
     })
     .catch(err => {
@@ -33,7 +31,6 @@ app.get("/api/listing/:id", (req, res) => {
 });
 
 app.get("/api/listings", (req, res) => {
-  console.log('get listings')
   database
     .getListings()
     .then(dataObj => {

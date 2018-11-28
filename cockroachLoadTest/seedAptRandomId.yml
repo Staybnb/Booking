@@ -1,7 +1,7 @@
-# artillery run loadtest.yml
+# artillery run cockroachLoadTest/seedAptRandomId.yml
 
 config:
-  target: 'http://127.0.0.1:4000'
+  target: "http://127.0.0.1:4000"
   processor: "./generator.js"
   http: 30
   phases:
@@ -12,13 +12,13 @@ config:
 scenarios:
   - name: "register an apartment listing with random generated id"
     flow:
-    - function: "generateApartmentData"
-    - post:
-        url: "/api/listing"
-        json: 
-          price: "{{price}}"
-          minStay: "{{minStay}}"
-          stars: "{{stars}}"
-          numRatings: "{{numRatings}}"
-          max: "{{max}}"
-    - log: "Sent a request to /api/listings with {{ price }}, {{ stars }}, {{ minStay }}"
+      - function: "generateApartmentData"
+      - post:
+          url: "/api/listing"
+          json:
+            price: "{{price}}"
+            minStay: "{{minStay}}"
+            stars: "{{stars}}"
+            numRatings: "{{numRatings}}"
+            max: "{{max}}"
+      - log: "Sent a request to /api/listings with {{ price }}, {{ stars }}, {{ minStay }}"

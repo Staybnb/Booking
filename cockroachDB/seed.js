@@ -1,5 +1,5 @@
 var async = require("async");
-var pool = require('./connection.js').pool;
+var pool = require("./connection.js").pool;
 
 // Connect to the "booking" database.
 
@@ -14,15 +14,15 @@ function connectAndSeed(pool) {
       done();
       process.exit();
     };
-  
+
     if (err) {
       console.error("could not connect to cockroachdb", err);
       finish();
     }
     async.waterfall(
-      [ 
+      [
         function(next) {
-          client.query("DROP TABLE IF EXISTS dates", next)
+          client.query("DROP TABLE IF EXISTS dates", next);
         },
         function(results, next) {
           client.query("DROP TABLE IF EXISTS apartment", next);
@@ -42,17 +42,18 @@ function connectAndSeed(pool) {
           );
         },
         function(results, next) {
-  
           client.query(
-            "INSERT INTO apartment (id, price, minStay, stars, numRatings, max) VALUES ('0', '40', '2', '4', '78', '4') returning id", 
+            "INSERT INTO apartment (id, price, minStay, stars, numRatings, max) VALUES ('0', '40', '2', '4', '78', '4') returning id",
             next
           );
         },
         function(results, next) {
           client.query(
-            `INSERT INTO dates (date, apartment_id) VALUES ('2018-11-01','${results.rows[0].id}')`,
+            `INSERT INTO dates (date, apartment_id) VALUES ('2018-11-01','${
+              results.rows[0].id
+            }')`,
             next
-          )
+          );
         }
       ],
       function(err, results) {
@@ -60,19 +61,19 @@ function connectAndSeed(pool) {
           console.error("Error createing tables apartment and dates: ", err);
           finish();
         }
-  
+
         console.log("Init:");
         results.rows.forEach(function(row) {
           console.log(row);
         });
-  
+
         finish();
       }
     );
   });
 }
 
-connectAndSeed(pool)
+connectAndSeed(pool);
 
 // client api
 module.exports.connectAndSeed = connectAndSeed;

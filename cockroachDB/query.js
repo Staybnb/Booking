@@ -1,6 +1,6 @@
 var pool = require("./connection.js").pool;
 
-function query(query, cb) {
+function query(query, values, cb) {
   pool.connect(function(err, client, done) {
     // Close communication with the database and exit.
     var finish = function() {
@@ -13,9 +13,9 @@ function query(query, cb) {
       finish();
     }
 
-    client.query(query, (err, res) => {
+    client.query(query, values, (err, res) => {
       if (err) cb(err, null);
-      // console.log(res.rows)
+      console.log(res);
       cb(null, res);
       finish();
     });

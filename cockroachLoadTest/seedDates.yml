@@ -1,7 +1,7 @@
-# artillery run loadtest.yml
+# artillery run cockroachLoadTest/seedDates.yml
 
 config:
-  target: 'http://127.0.0.1:4000'
+  target: "http://127.0.0.1:4000"
   processor: "./generator.js"
   http: 10
   phases:
@@ -12,10 +12,10 @@ config:
 scenarios:
   - name: "register dates to apartments 0-5000"
     flow:
-    - function: "generateDateData"
-    - post:
-        url: "/api/date"
-        json: 
-          apartmentId: "{{apartmentId}}"
-          date: "{{date}}"
-    - log: "Sent a request to /api/date with {{ apartmentId }}, {{ date }}"
+      - function: "generateDateData"
+      - post:
+          url: "/api/date"
+          json:
+            apartmentId: "{{apartmentId}}"
+            date: "{{date}}"
+      - log: "Sent a request to /api/date with {{ apartmentId }}, {{ date }}"

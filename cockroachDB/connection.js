@@ -1,12 +1,10 @@
 var pg = require("pg");
 var fs = require("fs");
 
-console.log('attempting connection to cockroachdb')
-
-// Connect to the "booking" database.
+// ---------- Connect to the "booking" database.
 
 // ---------- NOTE this user does not have root permissions
-// ---------- 'booking' db must exist 
+// ---------- 'booking' db must exist
 // ---------- db permissions must be granted to user
 
 var config = {
@@ -24,4 +22,4 @@ var config = {
 // Create a pool.
 var pool = new pg.Pool(config);
 
-module.exports.pool = pool
+module.exports.pool = pool;

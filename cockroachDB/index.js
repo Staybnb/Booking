@@ -1,44 +1,64 @@
-var query = require('./query.js').query
+var query = require("./query.js").query;
 
 function getListingData(id) {
   return new Promise((resolve, reject) => {
-    console.log('querying listing ' + id)
-    query(`
+    query(
+      `
       SELECT * FROM apartment t1 
       INNER JOIN dates t2 ON t1.id = t2.apartment_id
-		  WHERE t1.id=${id};
-		`, (err, result) => {
-      if (err) {
-        console.log(err)
-        reject(err); 
+		  WHERE t1.id=$1;
+      `,
+      [id],
+      (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          if (!result) {
+            reject(result);
+          }
+          resolve(result.rows);
+        }
       }
-      else {
-        console.log(result.rows);
-        resolve(result.rows);
-      }
-    });
+    );
   });
 }
 
 function getListings() {
   return new Promise((resolve, reject) => {
-    query("select * from apartment limit 100", (err, result) => {
-      if (err) reject(err);
-      else resolve(result.rows);
-    });
+    query(
+      `
+      select * from apartment limit 100
+      `,
+      [],
+      (err, { rows }) => {
+        if (err) reject(err);
+        else {
+          if (!result) {
+            reject(result);
+          }
+          resolve(rows);
+        }
+      }
+    );
   });
 }
 
 function postListing({ price, minStay, stars, numRatings, max }) {
   return new Promise((resolve, reject) => {
-    console.log('posting')
     query(
-      `insert into apartment (price, minStay, stars, numRatings, max) values (${price},${minStay},${stars},${numRatings},${max}) returning id`,
+      `
+      insert into apartment (price, minStay, stars, numRatings, max) 
+      values ($1, $2, $3, $4, $5) returning id
+      `,
+      [price, minStay, stars, numRatings, max],
       (err, result) => {
-        if (err) {reject(err);}
-        else {
-          console.log('resolving')
-          resolve(result.rows);
+        if (err) {
+          reject(err);
+        } else {
+          if (!result) {
+            reject(result);
+          }
+          resolve(result);
         }
       }
     );
@@ -48,10 +68,21 @@ function postListing({ price, minStay, stars, numRatings, max }) {
 function postListingId({ id, price, minStay, stars, numRatings, max }) {
   return new Promise((resolve, reject) => {
     query(
-      `insert into apartment (id, price, minStay, stars, numRatings, max) values (${id}, ${price},${minStay},${stars},${numRatings},${max}) returning id`,
+      `
+      insert into apartment (id, price, minStay, stars, numRatings, max) 
+      values ($1, $2, $3, $4, $5, $6) returning id
+      `,
+      [id, price, minStay, stars, numRatings, max],
       (err, result) => {
-        if (err) reject(err);
-        else resolve(result.rows);
+        if (err) {
+          reject(err);
+        } else {
+          if (!result) {
+            reject(result);
+          }
+          console.log(result);
+          resolve(result);
+        }
       }
     );
   });
@@ -59,18 +90,28 @@ function postListingId({ id, price, minStay, stars, numRatings, max }) {
 
 function deleteListing({ id }) {
   return new Promise((resolve, reject) => {
-    query(`delete from apartment where id = ${id}`, (err, result) => {
+    query(`delete from apartment where id = $1`, [id], (err, result) => {
       if (err) reject(err);
-      else resolve(result.rows);
+      else {
+        if (!result) {
+          reject(result);
+        }
+        resolve(result.rows);
+      }
     });
   });
 }
 
 function getDates() {
   return new Promise((resolve, reject) => {
-    query("select * from dates limit 100", (err, result) => {
+    query(`select * from dates limit 100`, [], (err, result) => {
       if (err) reject(err);
-      else resolve(result.rows);
+      else {
+        if (!result) {
+          reject(result);
+        }
+        resolve(result.rows);
+      }
     });
   });
 }
@@ -78,10 +119,16 @@ function getDates() {
 function postDate({ date, apartmentId }) {
   return new Promise((resolve, reject) => {
     query(
-      `insert into dates (date, apartment_id) values ('${date}',${apartmentId})`,
+      `insert into dates (date, apartment_id) values ('$1, $2)`,
+      [date, apartmentId],
       (err, result) => {
         if (err) reject(err);
-        else resolve(result);
+        else {
+          if (!result) {
+            reject(result);
+          }
+          resolve(result.rows);
+        }
       }
     );
   });
@@ -91,7 +138,12 @@ function deleteDate({ id }) {
   return new Promise((resolve, reject) => {
     query(`delete from dates where id = ${id}`, result => {
       if (err) reject(err);
-      else resolve(result.rows);
+      else {
+        if (!result) {
+          reject(result);
+        }
+        resolve(result.rows);
+      }
     });
   });
 }

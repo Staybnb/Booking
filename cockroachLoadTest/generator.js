@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // this module provides data generation functions for Artillery load tests
 // https://artillery.io/blog/using-fakerjs-with-artillery
@@ -9,16 +9,26 @@ module.exports = {
   generateDateData
 };
 
-const faker = require('faker');
+const faker = require("faker");
+
+const MIN_YEAR = 6; // 2016-2018
 
 var aptIdCounter = 1;
 function generateDateData(userContext, events, done) {
-  const date = `201${faker.random.number() % 10}-${(faker.random.number() % 11) +1}-${((faker.random.number() % 29) + 1)}`
-  const apartmentId = aptIdCounter++ % 5000
-
+  // generate data with Faker:
+  const date = `
+    201
+    ${(faker.random.number() % 2) + MIN_YEAR}
+    -
+    ${(faker.random.number() % 11) + 1}
+    -
+    ${(faker.random.number() % 29) + 1}
+    `;
+  const apartmentId = aptIdCounter++ % 5000;
+  // add variables to virtual user's context:
   userContext.vars.date = date;
   userContext.vars.apartmentId = apartmentId;
-
+  // continue with executing the scenario:
   return done();
 }
 
@@ -29,8 +39,8 @@ function generateApartmentDataId(userContext, events, done) {
   const price = faker.commerce.price();
   const minStay = (faker.random.number() % 5) + 1;
   const stars = (faker.random.number() % 5) + 1;
-  const numRatings = (faker.random.number() % 100) + 1
-  const max = (faker.random.number() % 12) + 6
+  const numRatings = (faker.random.number() % 100) + 1;
+  const max = (faker.random.number() % 12) + 6;
   // add variables to virtual user's context:
   userContext.vars.price = price;
   userContext.vars.minStay = minStay;
@@ -47,15 +57,14 @@ function generateApartmentData(userContext, events, done) {
   const price = faker.commerce.price();
   const minStay = (faker.random.number() % 5) + 1;
   const stars = (faker.random.number() % 5) + 1;
-  const numRatings = (faker.random.number() % 100) + 1
-  const max = (faker.random.number() % 12) + 6
+  const numRatings = (faker.random.number() % 100) + 1;
+  const max = (faker.random.number() % 12) + 6;
   // add variables to virtual user's context:
   userContext.vars.price = price;
   userContext.vars.minStay = minStay;
   userContext.vars.numRatings = numRatings;
   userContext.vars.max = max;
   userContext.vars.stars = stars;
-
   // continue with executing the scenario:
   return done();
 }

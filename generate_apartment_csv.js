@@ -14,7 +14,7 @@ const numPasses = 5;
 const ONE_MILLION = 1000000;
 
 var writer = csvWriter({
-  headers: ["id","price", "minStay", "stars", "numRatings", "max"],
+  headers: ["id", "price", "minStay", "stars", "numRatings", "max"],
   separator: ","
 });
 let writeStream = fs.createWriteStream("apartment.csv", { flags: "a" });
@@ -46,6 +46,6 @@ for (let j = 0; j < numPasses; j++) {
 
 writer.end();
 
-console.timeEnd("appending 5 million rows to apartment.csv")
+console.timeEnd("appending 5 million rows to apartment.csv");
 
 writer.destroy();
