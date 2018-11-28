@@ -94,7 +94,6 @@ function postListingId({ id, price, minStay, stars, numRatings, max }) {
 }
 
 function deleteListing({ id }) {
-  console.log('DELETING ' + id)
   return new Promise((resolve, reject) => {
     query(`delete from apartment where id = $1`, [id], (err, result) => {
       if (err) reject(err);
@@ -128,8 +127,27 @@ function postDate({ date, apartmentId }) {
       `insert into dates 
       (date, apartment_id) 
       values 
-      ('$1, $2)`,
+      ($1, $2)
+      `,
       [date, apartmentId],
+      (err, result) => {
+        if (err) reject(err);
+        else {
+          if (!result) {
+            reject(result);
+          }
+          resolve(result);
+        }
+      }
+    );
+  });
+}
+
+// TODO - Implement this endpoint in server
+function deleteDate({ id }) {
+  return new Promise((resolve, reject) => {
+    query(`delete from dates where id = $1`,
+      [id],
       (err, result) => {
         if (err) reject(err);
         else {
@@ -140,20 +158,6 @@ function postDate({ date, apartmentId }) {
         }
       }
     );
-  });
-}
-
-function deleteDate({ id }) {
-  return new Promise((resolve, reject) => {
-    query(`delete from dates where id = ${id}`, [], (err, result) => {
-      if (err) reject(err);
-      else {
-        if (!result) {
-          reject(result);
-        }
-        resolve(result.rows);
-      }
-    });
   });
 }
 

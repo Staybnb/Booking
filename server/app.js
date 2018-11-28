@@ -94,6 +94,7 @@ app.get("/api/dates", (req, res) => {
 // { date, apartmentId }
 // '1/02/2019','1'
 app.post("/api/date", (req, res) => {
+  console.log(req.body);
   database
     .postDate(req.body)
     .then(dataObj => {
@@ -103,6 +104,8 @@ app.post("/api/date", (req, res) => {
       res.status(500).send(err);
     });
 });
+
+// TODO implement delete dates
 
 app.get("/api/*", (req, res) => {
   res.send(404);
