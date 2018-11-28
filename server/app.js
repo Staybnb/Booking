@@ -44,7 +44,6 @@ app.get("/api/listings", (req, res) => {
 // { price, minStay, stars, numRatings, max }
 // '10000','10','1','1','1000'
 app.post("/api/listing", (req, res) => {
-  // console.log(req.body)
   database
     .postListing(req.body)
     .then(dataObj => {
@@ -68,11 +67,9 @@ app.post("/api/listingId", (req, res) => {
 });
 
 app.delete("/api/listing/:id", (req, res) => {
-  console.log(req.params)
   database
     .deleteListing(req.params)
     .then(dataObj => {
-      console.log(dataObj)
       res.status(200).send(dataObj);
     })
     .catch(err => {
@@ -94,7 +91,6 @@ app.get("/api/dates", (req, res) => {
 // { date, apartmentId }
 // '1/02/2019','1'
 app.post("/api/date", (req, res) => {
-  console.log(req.body);
   database
     .postDate(req.body)
     .then(dataObj => {
