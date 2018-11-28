@@ -30,13 +30,13 @@ function getListings() {
       select * from apartment limit 100
       `,
       [],
-      (err, { rows }) => {
+      (err, result) => {
         if (err) reject(err);
         else {
           if (!result) {
             reject(result);
           }
-          resolve(rows);
+          resolve(result.rows);
         }
       }
     );
@@ -47,8 +47,11 @@ function postListing({ price, minStay, stars, numRatings, max }) {
   return new Promise((resolve, reject) => {
     query(
       `
-      insert into apartment (price, minStay, stars, numRatings, max) 
-      values ($1, $2, $3, $4, $5) returning id
+      insert into apartment 
+      (price, minStay, stars, numRatings, max) 
+      values 
+      ($1, $2, $3, $4, $5) 
+      returning id
       `,
       [price, minStay, stars, numRatings, max],
       (err, result) => {
@@ -69,8 +72,11 @@ function postListingId({ id, price, minStay, stars, numRatings, max }) {
   return new Promise((resolve, reject) => {
     query(
       `
-      insert into apartment (id, price, minStay, stars, numRatings, max) 
-      values ($1, $2, $3, $4, $5, $6) returning id
+      insert into apartment 
+      (id, price, minStay, stars, numRatings, max) 
+      values 
+      ($1, $2, $3, $4, $5, $6) 
+      returning id
       `,
       [id, price, minStay, stars, numRatings, max],
       (err, result) => {
@@ -80,7 +86,6 @@ function postListingId({ id, price, minStay, stars, numRatings, max }) {
           if (!result) {
             reject(result);
           }
-          console.log(result);
           resolve(result);
         }
       }
@@ -89,6 +94,7 @@ function postListingId({ id, price, minStay, stars, numRatings, max }) {
 }
 
 function deleteListing({ id }) {
+  console.log('DELETING ' + id)
   return new Promise((resolve, reject) => {
     query(`delete from apartment where id = $1`, [id], (err, result) => {
       if (err) reject(err);
@@ -96,7 +102,7 @@ function deleteListing({ id }) {
         if (!result) {
           reject(result);
         }
-        resolve(result.rows);
+        resolve(result);
       }
     });
   });
@@ -119,7 +125,10 @@ function getDates() {
 function postDate({ date, apartmentId }) {
   return new Promise((resolve, reject) => {
     query(
-      `insert into dates (date, apartment_id) values ('$1, $2)`,
+      `insert into dates 
+      (date, apartment_id) 
+      values 
+      ('$1, $2)`,
       [date, apartmentId],
       (err, result) => {
         if (err) reject(err);
@@ -136,7 +145,7 @@ function postDate({ date, apartmentId }) {
 
 function deleteDate({ id }) {
   return new Promise((resolve, reject) => {
-    query(`delete from dates where id = ${id}`, result => {
+    query(`delete from dates where id = ${id}`, [], (err, result) => {
       if (err) reject(err);
       else {
         if (!result) {

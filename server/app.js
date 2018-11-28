@@ -68,9 +68,11 @@ app.post("/api/listingId", (req, res) => {
 });
 
 app.delete("/api/listing/:id", (req, res) => {
+  console.log(req.params)
   database
-    .deleteListing(req.params.id)
+    .deleteListing(req.params)
     .then(dataObj => {
+      console.log(dataObj)
       res.status(200).send(dataObj);
     })
     .catch(err => {

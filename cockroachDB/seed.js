@@ -6,6 +6,7 @@ var pool = require("./connection.js").pool;
 // NOTE this user does not have root permissions
 // 'booking' db must exist, and db permissions must be granted to user
 
+// TODO: rename this - i use this to drop tables //
 function connectAndSeed(pool) {
   // create and seed tables with a certain row
   pool.connect(function(err, client, done) {
@@ -62,7 +63,7 @@ function connectAndSeed(pool) {
           finish();
         }
 
-        console.log("Init:");
+        console.log("bookings initialized");
         results.rows.forEach(function(row) {
           console.log(row);
         });
